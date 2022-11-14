@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menuList.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menuRegister.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/menuRegister.js') }}" defer></script>
+</head>
+<body>
+    <!--헤더 영역-->
+    {% include 'header.html' %}
+
+    <!--가게대표사진영역-->
+    <div id="img_store"><img src="{{ url_for('static', filename='img/img_temp2.jpg') }}" class="img_temp_store"></div>
+
+    <!--가게로 돌아가기~메뉴추가 영역-->
+    <p class="title_menu_list">메뉴 리스트</p>
+    <div class="wrap_btn">
+        <a href="/storeDetail" class="btn_return_store"> <!--사용자의 히스토리로 돌아가는 링크 첨부해야함-->
+            <img class="img_return_store" src="{{ url_for('static', filename='icon/icon_return.png') }}" alt="가게로 돌아가기 버튼">
+            <div class="txt_btn">가게로 돌아가기</div>
+        </a>
+        <a href="#a" class="btn_add_menu"> 
+            <div class="txt_btn">메뉴 추가</div>
+            <img class="img_add_menu" src="{{ url_for('static', filename='icon/icon_circle_add.png') }}" alt="메뉴 등록 화면으로 이동하기 버튼">
+        </a>
+    </div>
+
+    <!--메뉴 영역-->
+    <div class="list_store_menu">
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+    </div>
+    <div class="list_store_menu">
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item_area" id="#" href="#">
+                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
+                <p class="info_menu_name" >메뉴이름</p>
+                <p class="info_menu_price">가격</p>
+            </div>
+        </div>
+    </div>
+
+    <!--메뉴 추가 팝업창-->
+    {% include 'menuRegister.html' %}
+
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+</body>
+</html>

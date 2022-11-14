@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myPage.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/myPage.js') }}" defer></script>
+   
+</head>
+<body>
+    <!--헤더 영역-->
+    {% include 'header.html' %}
+
+     <!--타이틀 영역-->
+
+    <div class="wrap_txt">
+        <p class="title_mypage">그동안 이런 가게에 다녀왔어요</p>
+    </div> 
+
+    <!--flip page-->
+    <section>  
+        <div class="left next"></div>  
+        <div class="right next"></div>  
+        <div class="left current"></div>  
+        <div class="right current"></div>  
+    </section>  
+
+
+    <div class="wrap_profile_block">
+        <div id="wrap_img_profile">
+            <div id="wrap_img_upload_profile">
+                <img id="img_profile_temp" src="">
+                <form id="wrap_post_profile" method="post" enctype="multipart/form-data">
+                    <div class="btn_upload_profile">
+                        <label for="chooseMenuFile">
+                            <img class="img_profile_input" src="{{ url_for('static', filename='icon/icon_upload_picture.png') }}">
+                        </label>
+                    </div>
+                    <!--일단 데스크탑 파일에서 업로드하는 것으로 해놓음-->
+                    <input type="file" id="chooseMenuFile" name="chooseMenuFile" accept="image/*" onchange="loadFile(this, img_profile_temp, wrap_img_upload_profile, wrap_post_profile, wrap_delete_profile, wrap_img_profile)">
+                </form>
+                <form id="wrap_delete_profile" method="post" enctype = "multipart/form-data">
+                    <div class="btn_delete_profile" onclick="deleteFile(img_profile_temp, wrap_img_upload_nwn, chooseMenuFile, wrap_img_upload_profile, wrap_delete_review)">
+                        <img class="img_profile_delete" scr="{{ url_for('static', filename='icon/icon_delete_picture.png') }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="wrap_inform_show">
+            <p class="txt_nickname">닉네임</p>
+            <p class="txt_show_nickname">penta22</p> <!--나중에 여기에 입력받은 닉네임 정보 연결. js 연결 못함-->
+            <p class="txt_email">이메일</p>
+            <p class="txt_show_email">pentapple@gmail.com</p> <!--나중에 여기에 입력받은 이메일 정보 연결. js 연결 못함-->
+        </div>
+    </div>
+    <div class="wrap_modify_profile">
+        <a href="#a" class="btn_modify_profile">
+            <div class="txt_modify_profile">프로필 수정하기</div>
+            <img class="img_modify_profile" src="{{ url_for('static', filename='icon/icon_edit.png') }}" alt="프로필 수정">
+        </a>
+    </div>
+
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+    
+  </body>
+</html>

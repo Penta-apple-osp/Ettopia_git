@@ -1,0 +1,294 @@
+/*  맛집세부화면에 적용되는 스타일 요소
+    적용 방법
+    <link rel="stylesheet" href="맛집세부화면.css">
+*/
+@import url('style.css');
+
+/* 구현 미완료 목록
+    지도 api
+*/
+#img_store {
+    width:80%;
+    height:350px;
+    border-radius: 16px;
+    margin: 8px 0 8px 0;
+    /*border: 2px solid var(--common-light-grey); 영역 구분을 위해 사용-추후 삭제*/
+    overflow: hidden; /*임시 이미지를 위해 사용-추후 삭제*/
+}
+.img_temp_store{ /*임시 이미지-추후 삭제할 것!!!*/
+    width: 100%;
+    object-fit: cover;
+}
+#map{
+    width:80%;
+    height:400px;
+    border-radius: 16px;
+    margin: 8px 0 8px 0;
+    border: 2px solid var(--light-green); /*영역 구분을 위해 사용-추후 삭제*/
+    overflow: hidden; /*임시 이미지를 위해 사용-추후 삭제*/
+  }
+.mark_map{ /*임시 이미지-추후 삭제할 것!!!*/
+    width: 100%;
+    object-fit: cover;
+  }
+
+/*가게 이름, 리뷰 및 별점 구역*/
+.info_store {
+    width: 80%
+}
+.wrap_store_side {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.info_store_name {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    flex-shrink: 0;
+    text-align: left;
+    margin: 0;
+}
+.wrap_review_and_star {
+    display: flex;
+    justify-content: right;
+    width: 80%;
+    padding: 10px 0;
+}
+.img_store_review{
+    margin: 0 0 0 0;
+}
+.wrap_review, .wrap_star{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+.txt_review_number, .txt_rating_number{
+    color: var(--common-dark-grey);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+}
+.wrap_star_store {
+    box-sizing: border-box;
+    display: flex;
+}
+.img_star_store{
+    margin-bottom: 2px;
+    margin-left: 1px;
+}
+
+/*구분선*/
+hr {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--common-light-grey);
+    border: 0;
+    height: 2px;
+}
+
+/*맛집 하단 정보 구역*/
+.wrap_store_info {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.info_store_total, .info_store_site {
+    text-align: left;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+}
+.info_store_total th, .info_store_site th{
+    font-weight: 700;
+    width: 100px;
+}
+.info_store_total td, .info_store_site td{
+    font-weight: 300;
+    width: 300px;
+}
+.info_store_site td a{
+    border-bottom: 3px solid var(--common-light-grey);
+    color: var(--common-dark-grey);
+}
+.info_store_site { /*가게 사이트*/
+    display: flex;
+    justify-content: right;
+    /*���� �ʿ�*/
+}
+
+/*맛집 위지 지도 api*/
+#map{
+    width:80%;
+    height:280px;
+    border-radius: 16px;
+    margin: 8px 0 8px 0;
+    border: 2px solid var(--light-green); /*영역 구분을 위해 사용-추후 삭제*/
+  }
+
+/*대표 메뉴 구역*/
+.list_mainMenu{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.list_menu_item{
+    width: 23.45%;
+}
+.item_area {
+    margin: 0 0 12px 0;
+    text-align: left;
+    box-shadow: 0 0 0 1px var(--common-light-grey) inset;
+    border-radius: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.img_main_menu{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.info_menu_name{
+    font-weight: 500;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: black;
+    margin: 0 0 2px 12px;
+}
+.info_menu_price{
+    font-weight: 300;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: black;
+    margin: 0 0 5px 12px;
+}
+
+
+/*리뷰보기 구역*/
+.title {
+    text-align: left;
+    width: 80%;
+    justify-content: center;
+    margin: 30px 0 20px 0;
+}
+
+.title_mainMenu ,.title_review {
+    align-self: flex-start;
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: 0;
+    border-radius: 8px;
+    text-align: left;
+    padding: 0.5em 1.3em;
+    margin: 0 0.1em 0 0;
+    width: 45%;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: var(--navy);
+    min-width : 280px;
+}
+.btn_main_plus , .btn_review_plus {
+    display: flex;
+    float: right;
+    flex-direction: row;
+    padding: 5px;
+    align-items: center;
+}
+.txt_more{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--common-dark-grey);
+    text-decoration: none;
+    margin: 0 3px;
+    margin-bottom: 2px;
+}
+
+.wrap_space{
+    width: 80%;
+}
+
+/*맛집 리뷰 구역: This section is for store review*/
+.list_review {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    border-radius: 16px;
+    border: 1px solid var(--common-light-grey);
+}
+.img_review_1 {
+    border-radius: 16px;
+    padding: 10px;
+    width: 30%;
+    height: calc(width*1.3888*100%);
+}
+.info_review {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    margin: 10px 20px 0 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.wrap_review_written {
+    font-family: 'Noto Sans KR', sans-serif;
+    flex-direction: row;
+    display: flex;
+    align-content: center;
+    margin: 10px 0;
+}
+.txt_review_nickname_1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 500;
+    white-space:nowrap;
+}
+
+.wrap_star_review {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    padding: 2px 0;
+}
+.txt_review_content_1 {
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0;
+
+    /*텍스트 ...더보기로 만드는 법*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word; 
+    line-height: 1.2em;
+    height: 4.8em; /* line-height 가 1.2em 이고 4라인을 자르기 때문에 height는 1.2em * 4 = 4.8em */
+}
+
+.icon_review_favorite_heart {
+    display: flex;
+    justify-content: right;
+    padding: 10px;
+    margin: 10px;
+}

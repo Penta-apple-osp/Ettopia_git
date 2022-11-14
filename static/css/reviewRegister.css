@@ -1,0 +1,217 @@
+ .warp_popup_review {
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .warp_popup_review.show {
+    display: flex;
+  }
+
+  /*팝업창의 속성*/
+  .wrap_review { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .popup_head{
+    width:100%;
+    box-shadow: 0px 0px 10px 2px #a1a1a1;
+    z-index: 1000;
+    background-color: var(--navy);
+    text-align: left;
+  }
+  .txt_title{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    margin: 15px 20px;
+  }
+  .wrap_review .popup_body{
+    width:85%;
+    align-self: center;
+    padding: 10px 50px 10px 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  .popup_foot{         
+    padding-right: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .btn_review_cancel, .btn_review_register{
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.3em 1.2em;
+    margin: 5px 0.5em 5px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.1s;
+  }
+  .btn_review_cancel{
+    color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }
+  .btn_review_register{
+    color: white;
+    background-color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }
+
+/*리뷰 이미지 영역*/
+#wrap_img_review{
+    width:140px;
+    height:140px;
+    position: static;
+    object-fit: cover;
+}
+#wrap_img_upload_review{
+    width:100%;
+    height:100%;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: var(--white);
+    border: 2px dashed var(--common-light-grey); /*영역 구분을 위해 사용-추후 삭제*/
+}
+.img_review_temp{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    display: block;
+}
+/*이미지 업로드 버튼*/
+.btn_upload_review {
+    position: absolute;
+    bottom: 0px;
+    right: 3px;
+    display: flex;
+    justify-content: flex-end;
+}
+.img_reviewfile_input {
+    cursor: pointer;
+    width:30px;
+    height:30px;
+    padding: 5px;
+    filter: drop-shadow(2px 2px 2px rgb(172, 172, 172));
+}
+/* 못생긴 기존 input 숨기기 */
+#chooseReviewFile {
+    visibility: hidden;
+}
+
+/*이미지 삭제 버튼*/
+#wrap_delete_review *{
+    visibility: hidden;
+}
+.btn_delete_review {
+    position: absolute;
+    top: 5px; 
+    right: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.img_reviewfile_delete {
+    cursor: pointer;
+    width:15px;
+    height:15px;
+    margin: 5px;
+}
+
+.wrap_rating{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin: 10px;
+}
+.txt_rating{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    width: 100px;
+    margin: 0;
+    text-align: left;
+    align-self: flex-start;
+}
+
+/*평점 클릭하면 배꽃 1개, 2개, 3개... 유지하는 기능*/
+.wrap_rating .rating { /*Rating 아이콘 배경 상자. 화면 상에서 위치 잡아주려는 layout용. 없어도 될듯*/
+  height: 20px;
+  float: left;
+} 
+.rating label {
+  float: right; /*가로 오른쪽 정렬 해줘야 별들 간 간격이 똑같음*/
+  position: relative; /*absolute 쓰면 별들 다 사라짐. absolute 부모 요소 기준으로 배치.*/
+  width: 25px; /*꽃들 사이 간격 조정*/
+  cursor: pointer; /*이 코드를 치면 아이콘 위로 마우스 커서를 올리면 모양이 바뀐다.*/
+}
+.rating label:not(:first-of-type) { /*아이콘 간 간격*/
+  padding-right: 1px;
+}
+
+.rating label:before {
+  content: '\273F'; /*유니코드 상의 꽃 코드. 꽃을 이미지로 추가한 게 아니라 문자열로 추가해서 글자색을 바꾸는 원리. 위의 폰트 url로 그래서 필요함.*/
+  /*꽃모양 여러개 있는데 https://www.aestheticsymbols.me/flower.html 여기서 골라서 https://unicode-table.com/kr/2740/ 여기 검색창에 '꽃 이모지' 복붙해서 유니코드 찾기*/
+  font-size: 25px; /*폰트 사이즈*/
+  color: var(--common-light-grey); /*선택 전 글자 색깔*/
+  line-height: 1;
+  height: 20px;
+}
+.rating input {
+  display: none;
+}
+.rating input:checked ~ label:before, .rating:not(:checked) > label:hover:before, .rating:not(:checked) > label:hover ~ label:before {
+  transition: all 0.5s;
+  color: var(--light-green);
+}
+
+/*리뷰 내용 적는 박스*/
+#input_review{
+    width: 100%;
+    resize: none;
+    border-radius: 8px;
+    border: 0;
+    color: var(--navy);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: var(--common-light-grey);
+}
+
+/*창의 크기가 작아지면 팝업창도 같이 작아짐*/
+@media screen and (max-width: 800px) {
+    .warp_body{
+        width: 500px;
+    }
+}

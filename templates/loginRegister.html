@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginRegister.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/loginRegister.js') }}" defer></script>
+    
+
+</head>
+<body>
+    
+     <!--헤더 영역-->
+    {% include 'header.html' %}
+    
+    <!--배경의 별 영역-->
+    <div class="bg">
+      <div class="z-3">
+        <div class="tile top-left animate-opacity freq-5"></div>
+        <div class="tile top-right animate-opacity freq-9"></div>
+        <div class="tile bottom-left animate-opacity freq-7"></div>
+        <div class="tile bottom-right animate-opacity freq-10"></div>
+      </div>
+      <div class="z-2">
+        <div class="tile top-left animate-opacity freq-9 delay-2"></div>
+        <div class="tile top-right animate-opacity freq-5 delay-2"></div>
+        <div class="tile bottom-left animate-opacity freq-6 delay-4"></div>
+        <div class="tile bottom-right animate-opacity freq-10 delay-4"></div>
+      </div>
+      <div class="z-1">
+        <div class="tile top-left animate-opacity freq-7 delay-2"></div>
+        <div class="tile top-right animate-opacity freq-5 delay-4"></div>
+        <div class="tile bottom-left animate-opacity freq-9 delay-2"></div>
+        <div class="tile bottom-right animate-opacity freq-5 delay"></div>
+      </div>
+    </div>
+
+    <!--사이 띄어주기-->
+    <p class="wrap_space"></p>
+    
+    <!--주의! class명이 개발표준과 다르더라도 수정 불가-->
+    <div class="wrap_login_and_register">
+        <div class="container right-panel-active">  
+            <!-- 회원가입 -->  
+            <div class="container__form container--signup">  
+                <form action="/submit_register_post" method="post" class="form" id="form1">  
+                    <h2 class="form__txt_title">회원가입</h2>  
+                    <input type="text" placeholder="닉네임" class="input" name="registerNickname" required/>  
+                    <input type="text" placeholder="아이디" class="input" name="registerId" required/>  
+                    <input type="password" placeholder="비밀번호" class="input" name="registerPassword" required/>  
+                    <button id="23445" type="submit" class="btn_register" onclick="submit_register_post2">회원가입</button>  
+                </form>  
+            </div>  
+           <!-- 로그인 -->
+            <div class="container__form container--signin">  
+               <form action="/submit_login_post" method="post" class="form" id="form2">  
+                    <h2 class="form__txt_title">로그인</h2>  
+                    <input type="text" placeholder="아이디" class="input" name="loginId" required/>  
+                    <input type="password" placeholder="비밀번호" class="input" name="loginPassword" required/>  
+                    <!--<a href="#" class="link">Forgot your password?</a>-->
+                    <button class="btn_login" id="1234">로그인</button>  
+                </form> 
+            </div>  
+            <!-- 오버레이-->  
+            <div class="container__overlay">  
+                <div class="overlay" style="">  <!-- 배경 이미지는 html안에 포함해야 함-->  
+                    <div class="overlay__panel overlay--left">  
+                        <button class="btn_login" id="signIn">로그인</button>  
+                    </div>  
+                    <div class="overlay__panel overlay--right">  
+                        <button class="btn_register" id="signUp">회원가입</button>  
+                    </div>  
+                </div>  
+            </div>  
+
+        </div>
+    </div>
+        <!--사이 띄어주기-->
+    <p class="wrap_space_bottom"></p>
+
+    <!-- FOOTER START -->
+    <div class="footer">
+      <div class="contain">
+        <div class="col">
+            <h1>About Pentapple</h1>
+            <p class = "txt">Our mission is to provide a bond between people <br>making a living near Ewha.<br>
+                We provide a service for the convenience of all users <br> when they are eating, playing, studying, and etc.
+          </div>
+        <div class="col">
+          <h1>Company</h1>
+          <ul>
+            <li>About Us</li>
+            <li>Services</li>
+            <li>Imprint</li>
+            <li>News</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h1>Support</h1>
+          <ul>
+            <li>Contact Us</li>
+            <li>FAQs</li>
+            <li>Privacy Policy</li>
+          </ul>
+        </div>
+        <div class="txt">
+              <br>
+              <div style="font-size: 14px; font-weight: 400; margin-left: 40px;">
+              E-mail : pentapple@gmail.com<br>
+              Phone : 123-4567-8910<br><br>
+              </div>
+              <hr style="border: solid 1px #999999; width: 120%; margin-left: 40px;">
+              <div style="font-size: 13px; font-weight: 300; margin-left: 40px;"><br>Copyright © 2022 Pentapple Company • All rights reserved</div>
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- END OF FOOTER -->
+    
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+</head>
+<body>
+    <!--헤더 영역-->
+    <nav class="nav">
+        <div class="nav_ettopia">
+            <img class="logo_ettopia" height="30" src="{{ url_for('static', filename='logo/logo_ettopia_pic.png') }}" alt="Ettopia Logo">
+            <a class="txt_ettopia" href="/homePage"><img class="logo_ettopia_txt" height="30" src="{{ url_for('static', filename='logo/logo_ettopia_txt.png') }}" alt="Ettopia Txt"></a>
+        </div>
+        <ul class="list_nav">
+            <li class="nav_item"><a class="txt_item" href="/homePage">Home</a></li>
+            <li class="nav_item"><a class="txt_item" href="/aboutUs">About Us</a></li>
+            <li class="nav_item"><a class="txt_item" href="/myPage">MyPage</a></li>
+            <li class="nav_item"><a class="txt_item" href="/loginRegister">Login/Register</a></li>
+        </ul>
+        <a href="#a" class="btn_nav_menu">
+            <img src="{{ url_for('static', filename='icon/icon_menu.png') }}" alt="메뉴 버튼" width="30" height="30">
+        </a>
+    </nav>
+</body>
+</html>

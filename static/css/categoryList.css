@@ -1,0 +1,97 @@
+/*  카테고리리스트화면에 적용되는 스타일 요소
+    적용 방법
+    <link rel="stylesheet" href="카테고리리스트화면.css">
+*/
+
+@import url('style.css');
+
+/*타이틀 영역*/
+.wrap_txt{
+    width: 80%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.title_category{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: black;
+  }
+.desc_category{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 auto;
+    color: var(--common-dark-grey);
+}
+
+/*가게 리스트 영역*/
+.wrap_store_list{
+    width: 80%;
+    display : flex;
+    flex-direction: column;
+    margin-bottom: 200px;
+}
+.wrap_toplist {
+    width: 80%;
+    margin: 0 auto;
+    height: 280px;
+    box-shadow: 0 0 0 0 white, 
+                0 1.5px 0 0 #D9D9D9, 
+                0 0 0 0 white, 
+                0 0 0 0 white, 
+                0 1.5px 0 0 #D9D9D9 inset;
+    display: flex;
+    align-items: center;
+}
+.wrap_store_area{
+    height: 210px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.wrap_store_area .txt_area{
+    width: 100%;
+    padding-left: 40px;
+}
+.title_area{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 17px 0;
+    align-items: center;
+}
+.img_toplist{
+    height: 100%;
+    object-fit: cover;
+}
+.info_name{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    margin-right: 10px;
+    font-size: 27px;
+}
+.info_address, .info_time{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    margin: 10px 0 10px 0;
+}
+.btn_more{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 40px 30px 10px 10px;
+    color: var(--common-dark-grey);
+    float: right;
+}
+
+/*
+@media screen and (max-width: 1300px) {
+    .wrap_toplist{
+        width: 100%;
+    }
+}*/

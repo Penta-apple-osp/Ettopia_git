@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reviewList.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reviewRegister.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/reviewRegister.js') }}" defer></script>
+</head>
+<body>
+    <!--헤더 영역-->
+    {% include 'header.html' %}
+
+    <!--타이틀 영역-->
+    <div class="wrap_txt">
+        <p class="title_review">리뷰 리스트</p>
+        <p class="desc_review">다른 사람들의 리뷰를 읽어보세요!</p>
+    </div>
+
+    <!--가게로 돌아가기~메뉴추가 영역-->
+    <div class="wrap_btn">
+        <a href="storeDetail" class="btn_return_store">
+            <img class="img_return_store" src="{{ url_for('static', filename='icon/icon_return.png') }}" alt="가게로 돌아가기 버튼">
+            <div class="txt_btn">가게로 돌아가기</div>
+        </a>
+        <a href="#a" class="btn_add_review">
+            <div class="txt_btn">리뷰 추가</div>
+            <img class="img_add_review" src="{{ url_for('static', filename='icon/icon_circle_add.png') }}" alt="메뉴 등록 화면으로 이동하기 버튼">
+        </a>
+    </div>
+
+    <!--리뷰 리스트 영역-->
+    <div class="wrap_review_list">
+        <div class="wrap_reviewblock">
+            <div class="wrap_review_area">
+                <div class="wrap_profile">
+                    <img class="img_profile" src="https://via.placeholder.com/100x100.png/ddd/ddd">
+                </div>
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_nickname">닉네임</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                    </div>
+                    <p class="txt_review">리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                    </p>
+                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                </div>
+                <div class="wrap_like">
+                    <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
+                    <p class="txt_num_like">10</p>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_reviewblock">
+            <div class="wrap_review_area">
+                <div class="wrap_profile">
+                    <img class="img_profile" src="https://via.placeholder.com/100x100.png/ddd/ddd">
+                </div>
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_nickname">닉네임</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                    </div>
+                    <p class="txt_review">리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
+                    </p>
+                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                </div>
+                <div class="wrap_like">
+                    <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
+                    <p class="txt_num_like">10</p>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_reviewblock">
+            <div class="wrap_review_area">
+                <div class="wrap_profile">
+                    <img class="img_profile" src="https://via.placeholder.com/100x100.png/ddd/ddd">
+                </div>
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_nickname">닉네임</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                    </div>
+                    <p class="txt_review">리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
+                    </p>
+                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                </div>
+                <div class="wrap_like">
+                    <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
+                    <p class="txt_num_like">10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--리뷰 추가 팝업창-->
+    {% include 'reviewRegister.html' %}
+
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+    
+</body>
+</html>

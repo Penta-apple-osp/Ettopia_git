@@ -1,0 +1,368 @@
+/*  맛집등록화면에 적용되는 스타일 요소
+    적용 방법
+    <link rel="stylesheet" href="맛집등록화면.css">
+*/
+
+@import url('style.css');
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    overflow-x: hidden;
+}
+/*이미지 영역*/
+#wrap_img{
+    width:80%;
+    height:350px;
+    position: static;
+}
+#wrap_img_upload{
+    width:100%;
+    height:350px;
+    border-radius: 16px;
+    margin: 8px 0 8px 0;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: var(--white);
+    border: 2px dashed var(--common-light-grey); /*영역 구분을 위해 사용-추후 삭제*/
+}
+.img_store_temp{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+/*이미지 업로드 버튼*/
+.btn_upload {
+    position: absolute;
+    top: 290px; 
+    right: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.img_file_input {
+    cursor: pointer;
+    width:40px;
+    height:40px;
+    padding: 5px;
+    filter: drop-shadow(2px 2px 2px rgb(172, 172, 172));
+}
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
+
+/*이미지 삭제 버튼*/
+#wrap_delete *{
+    visibility: hidden;
+}
+.btn_delete {
+    position: absolute;
+    top: 5px; 
+    right: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.img_file_delete {
+    cursor: pointer;
+    width:20px;
+    height:20px;
+    margin: 10px;
+}
+
+/*가게이름 영역*/
+.wrap_txt{
+    width: 80%;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+.info_store_name{
+    text-align: left;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: black;
+}
+
+/*정보 입력 영역*/
+.wrap_info_list{
+    width: 80%;
+    margin: 0 auto;
+    box-shadow:  /*리뷰 사이사이 선 나누기*/
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9, 
+        0 0 0 0 white, 
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9 inset;
+    display : flex;
+    align-items : center;
+    justify-content: flex-start;
+}
+.wrap_info_list_fixed{
+    width: 80%;
+    height: 54px;
+    margin: 0 auto;
+    box-shadow:  /*리뷰 사이사이 선 나누기*/
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9, 
+        0 0 0 0 white, 
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9 inset;
+    display : flex;
+    align-items : center;
+    justify-content: flex-start;
+}
+.txt_food_category, .txt_price_range, .txt_parking, .txt_site{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 17px 5px 17px 5px;
+    width: 100px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+.wrap_space{
+    width: 80%;
+    margin: 30px;
+}
+
+/*음식 종류 필터 버튼*/
+.fliter{
+    align-items: center;
+}
+.items_fliter{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 12px 0 10px 0;
+}
+.btn_fliter_food, .btn_fliter_park{ /*.btn_fliter_location 으로 나중에 후문 정문 여부 추가할 수 있음*/
+    background-color: #fff;
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.1em 1em;
+    margin: 3px 0.3em 3px 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    transition: all 0.1s;
+  }
+  .btn_fliter_food, .btn_fliter_park{
+    color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }
+/*
+  .btn_fliter_location{
+    color: var(--pink);
+    border: 0.12em solid var(--pink);
+  }
+*/
+  .btn_fliter_food:hover, .btn_fliter_food.active, .btn_fliter_park:hover, .btn_fliter_park.active {
+    color: #ffffff;
+    background-color: var(--navy);
+    font-weight: 700;
+  }
+
+/*
+  .btn_fliter_location:hover{
+    color: #ffffff;
+    background-color: var(--pink);
+    font-weight: 700;
+  }
+*/
+
+/*드롭다운 메뉴*/
+.list_dropdown {
+    width: 100px;
+    border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+.list_dropdown:hover {
+    overflow: visible;
+}
+.wrap_dropdown{
+    width: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1.6px var(--navy) inset;
+    float: left;
+    background-color: #fff;
+    min-width: 50px;
+}
+.txt_dropdown, .item_dropdown {
+    display: block;
+    text-align: center;
+    padding: 4.5px 10px;
+    color: var(--navy);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+/* 드롭다운 아래 메뉴 */
+ul ul {
+    position: absolute;
+    max-height: 0;
+    transition: max-height 0.2s;
+}
+ul li:hover ul {
+    max-height: 999px;
+}
+ul ul li {
+    border-radius: 8px;
+    float: none;
+    background-color: var(--pink);
+}
+ul ul li:hover{
+    background-color: var(--navy);
+}
+
+ul ul li:hover .item_dropdown{
+    color: #fff;
+}
+
+/* 가격대 반응형 */
+.wrap_min_price{
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+
+  .make_new_line{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px 5px 5px 0px;
+  }
+
+/* 사이트 주소 입력하는 칸*/
+.txt_desc{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--common-dark-grey);
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0 20px 0 5px;
+    flex-shrink: 0;
+}
+.txt_input_site, .txt_input_min, .txt_input_max{
+    width: 500px;
+    height: 30px;
+    border-radius: 8px;
+    border: 0;
+    color: var(--navy);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: var(--common-light-grey);
+}
+
+/*소제목-메뉴와 리뷰*/
+.title{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: 30px 0 20px 0;
+}
+
+.title_menu, .title_review {
+    align-self: flex-start;
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: 0;
+    border-radius: 8px;
+    text-align: left;
+    padding: 0.5em 1.3em;
+    margin: 0 0.1em 0 0;
+    width: 45%;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: var(--navy);
+    min-width : 280px;
+}
+.txt_init_menu, .txt_init_review{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--common-dark-grey);
+    font-weight: 500;
+    font-size: 17px;
+    margin: 10px 5px 10px 5px;
+    width: 100%;
+}
+
+/*메뉴추가, 리뷰 추가 버튼*/
+.btn_add_menu, .btn_add_review{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+.img_add_menu, .img_add_review{
+    width: 20px;
+    height: 20px;
+    align-self: center;
+}
+.txt_btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--common-dark-grey);
+    text-decoration: none;
+    margin: 0 3px;
+    margin-bottom: 2px;
+}
+
+.wrap_register{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wrap_register{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn_store_cancel, .btn_store_register{
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.3em 1.2em;
+    margin: 5px 0.5em 5px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.1s;
+  }
+
+  .btn_store_cancel{
+    background-color: #fff;
+    color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }
+  .btn_store_register{
+    color: white;
+    background-color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }

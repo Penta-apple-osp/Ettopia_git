@@ -1,0 +1,117 @@
+/*  맛집대표메뉴조회화면에 적용되는 스타일 요소
+    적용 방법
+    <link rel="stylesheet" href="맛집대표메뉴조회화면.css">
+*/
+
+@import url('style.css');
+
+/* 가게대표사진영역 */
+#img_store{
+  width:80%;
+  height:350px;
+  border-radius: 16px;
+  margin: 8px 0 8px 0;
+  /*border: 2px solid var(--common-light-grey); 영역 구분을 위해 사용-추후 삭제*/
+  overflow: hidden; /*임시 이미지를 위해 사용-추후 삭제*/
+}
+.img_temp_store{ /*임시 이미지-추후 삭제할 것!!!*/
+    width: 100%;
+    object-fit: cover;
+}
+
+/*가게로 돌아가기~메뉴추가 영역*/
+.title_menu_list{
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+.wrap_btn{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.btn_return_store, .btn_add_menu{
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+}
+.img_return_store, .img_add_menu{
+  width: 20px;
+  height: 20px;
+  align-self: center;
+}
+.txt_btn{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--common-dark-grey);
+  text-decoration: none;
+  margin: 0 3px;
+  margin-bottom: 2px;
+}
+.title{
+  text-align: left;
+  width: 80%;
+  justify-content: center;
+  margin: 30px 0 20px 0;
+}
+.title_category {
+  align-self: flex-start;
+  display: inline-block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border: 0;
+  border-radius: 8px;
+  text-align: left;
+  padding: 0.5em 1.3em;
+  margin: 0 0.1em 0 0;
+  width: 45%;
+  box-sizing: border-box;
+  color: white;
+  background-color: var(--navy);
+}
+
+/*메뉴 영역*/
+.list_store_menu{
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.items{
+  width: 23.45%;
+}
+.item_area{
+  margin: 0 0 12px 0;
+  text-align: left;
+  box-shadow: 0 0 0 1px var(--common-light-grey) inset;
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.img_menu{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.info_menu_name{
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: black;
+  margin: 0 0 2px 12px;
+}
+.info_menu_price{
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: black;
+  margin: 0 0 5px 12px;
+}

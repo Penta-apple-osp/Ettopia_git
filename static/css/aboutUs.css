@@ -1,0 +1,177 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ body {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgb(8, 21, 35) 40%, rgb(104, 104, 132));
+    overflow-x: hidden;
+ }
+
+  /*펜타애플 팀 이름 영역*/
+  .wavy {
+    position: relative;
+    -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    font-family: monospace;
+  }
+  .wavy span {
+    position: relative;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-size: 3em;
+    text-transform: uppercase;
+    animation: animate 1.5s ease-in-out infinite;
+    animation-delay: calc(.1s * var(--i))
+  }
+  @keyframes animate {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    20% {
+      transform: translateY(-20px);
+    }
+    40% {
+      transform: translateY(0px);
+    }
+  }
+
+  /*펜타애플 팀원소개 영역*/
+  .list_member{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+  .members{
+    width: 24.45%;
+  }
+  .member_area{
+    margin: 0 0 12px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .profile_box{
+    margin: 0 0 2px 0;
+    width: 100%;
+    object-fit: cover;
+    animation-name: profile_box;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition-timing-function: linear;
+  }
+  .name_box{
+    font-size: 1.4vw;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+  }
+
+  /*펜타애플 팀원 미모티콘 둥둥*/
+  @keyframes profile_box {
+    from {
+        transform: translateY(5px);
+    }
+    25% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+    to {
+        transform: translateY(5px);
+    }
+    
+}
+
+/*펜타애플과 프로젝트 지향점 소개 영역*/
+.txt_direction{
+  font-size: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: rgb(198, 198, 198);
+  text-align: center;
+}
+
+/* 눈 내리기 */
+.img_snowflake {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+}
+
+@-webkit-keyframes img_snowflakes-fall{
+  0%{top:-10%}100%{top:100%}}
+  
+@-webkit-keyframes img_snowflakes-shake{
+  0%{-webkit-transform:translateX(0px);transform:translateX(0px)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}100%{-webkit-transform:translateX(0px);transform:translateX(0px)}}
+  
+@keyframes img_snowflakes-fall{
+  0%{top:-10%}100%{top:100%}}
+  
+@keyframes img_snowflakes-shake{
+  0%{transform:translateX(0px)}50%{transform:translateX(80px)}100%{transform:translateX(0px)}}
+  
+.img_snowflake{
+  position:fixed;
+  top:-10%;
+  z-index:99;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;user-select:none;
+  cursor:default;
+  -webkit-animation-name:img_snowflakes-fall,img_snowflakes-shake;
+  -webkit-animation-duration:10s,3s;
+  -webkit-animation-timing-function:linear,ease-in-out;
+  -webkit-animation-iteration-count:infinite,infinite;
+  -webkit-animation-play-state:running,running;
+  animation-name:img_snowflakes-fall,img_snowflakes-shake;
+  animation-duration:10s,3s;
+  animation-timing-function:linear,ease-in-out;
+  animation-iteration-count:infinite,infinite;
+  animation-play-state:running,running}
+  
+.img_snowflake:nth-of-type(0){
+  left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}
+
+.img_snowflake:nth-of-type(1){
+  left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}
+  
+.img_snowflake:nth-of-type(2){
+  left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}
+  
+.img_snowflake:nth-of-type(3){
+  left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}
+
+.img_snowflake:nth-of-type(4){
+  left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}
+  
+.img_snowflake:nth-of-type(5){
+  left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}
+  
+.img_snowflake:nth-of-type(6){
+  left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}
+  
+.img_snowflake:nth-of-type(7){
+  left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}
+
+.img_snowflake:nth-of-type(8){
+  left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}
+  
+.img_snowflake:nth-of-type(9){
+  left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}
+

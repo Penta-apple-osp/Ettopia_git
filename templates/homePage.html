@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homePage.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/homePage.js') }}" defer></script>
+</head>
+
+<body>
+    <!--헤더 영역-->
+    {% include 'header.html' %}
+
+    <!--지도 필터링 버튼 구역
+        미구현 부분
+        1. 필터링 버튼이 지도의 width를 맞추어야 한다.
+        2. thumb_box의 높이가 줄어들어야 한다.
+    -->
+    <div class="fliter">
+        <div class="items_fliter">
+            <a href="#" class="btn_fliter_location">정문</a>
+            <a href="#" class="btn_fliter_location">후문</a>
+            <a href="#" class="btn_fliter_food">한식</a>
+            <a href="#" class="btn_fliter_food">양식</a>
+            <a href="#" class="btn_fliter_food">중식</a>
+            <a href="#" class="btn_fliter_food">일식</a>
+            <a href="#" class="btn_fliter_food">태국</a>
+            <a href="#" class="btn_fliter_food">인도</a>
+            <a href="#" class="btn_fliter_food">음료&카페</a>
+            <a href="#" class="btn_fliter_food">디저트</a>
+            <a href="#" class="btn_fliter_food">분식</a>
+            <a href="#" class="btn_fliter_food">페스트푸드</a>
+            <a href="#" class="btn_fliter_food">샐러드&샌드위치</a>
+            <a href="#" class="btn_fliter_food">야식</a>
+        </div>
+    </div>
+
+    <!-- 지도 구역-->
+    <div id="map"><img class="temp_map" src="{{ url_for('static', filename='img/img_map_temp.png') }}" alt=""></div>
+    <!--
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f77b29008ba3b87a81a61466e1bccb68"></script>
+    -->
+    <!--소제목 구역-->
+    <div class="title">
+        <p class="title_category" href="#">카테고리</p>
+    </div>
+    <!--카테고리 구역-->
+    <div class="list_store">
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">한식 가게</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">양식 가게</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">중식 가게</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">일식 가게</p>
+            </a>
+        </div>
+    </div>
+    <div class="list_store">
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">태국 음식</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">인도 음식</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">음료&카페</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">디저트</p>
+            </a>
+        </div>
+    </div>
+    <div class="list_store">
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">분식</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">페스트푸드</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">샐러드&샌드위치</p>
+            </a>
+        </div>
+        <div class="items">
+            <a class="item_area" id="#" href="/categoryList">
+                <img class="thumb_box" src="https://via.placeholder.com/300x200.png/ddd/ddd" alt="가게 대표사진">
+                <p class="title_box">야식</p>
+            </a>
+        </div>
+    </div>
+
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+
+</body>
+</html>

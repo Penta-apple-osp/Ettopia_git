@@ -1,0 +1,200 @@
+/*  리뷰조회화면에 적용되는 스타일 요소
+    적용 방법
+    <link rel="stylesheet" href="reviewList.css">
+*/
+
+@import url('style.css');
+
+:root {
+    --color-blue: #303349;
+    --color-purple: rgb(113,75,128);
+    --color-pink: #D3A09B;
+    --transition-time: 500ms;
+    --transition-ease: cubic-bezier(.1,.7,.8,.3);
+}
+
+/*타이틀 영역*/
+.wrap_txt{
+    width: 80%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.title_review{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: black;
+}
+.desc_review{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 auto;
+    color: var(--common-dark-grey);
+}
+
+
+/*가게로 돌아가기~메뉴추가 영역*/
+.title_menu_list{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+  .wrap_btn{
+    width: calc(80%*0.9);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .btn_return_store, .btn_add_review{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+  }
+  .img_return_store, .img_add_review{
+    width: 20px;
+    height: 20px;
+    align-self: center;
+  }
+  .txt_btn{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--common-dark-grey);
+    text-decoration: none;
+    margin: 0 3px;
+    margin-bottom: 2px;
+  }
+  .title{
+    text-align: left;
+    width: 80%;
+    justify-content: center;
+    margin: 30px 0 20px 0;
+  }
+  .title_category {
+    align-self: flex-start;
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: 0;
+    border-radius: 8px;
+    text-align: left;
+    padding: 0.5em 1.3em;
+    margin: 0 0.1em 0 0;
+    width: 45%;
+    box-sizing: border-box;
+    color: white;
+    background-color: var(--navy);
+  }
+
+/*리뷰 리스트 영역*/
+.wrap_review_list{
+    width: 80%;
+    display : flex;
+    flex-direction: column;
+    margin-bottom: 200px;
+}
+.wrap_reviewblock{
+    width: 90%;
+    margin: 0 auto;
+    box-shadow:  /*리뷰 사이사이 선 나누기*/
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9, 
+        0 0 0 0 white, 
+        0 0 0 0 white, 
+        0 1.5px 0 0 #D9D9D9 inset;
+    display : flex;
+    align-items : center;
+    justify-content: space-between;
+}
+.wrap_review_area{  /*닉네임, 리뷰 텍스트, 사진 영역*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.wrap_profile { /*프로필 영역*/
+    width: 70px;
+    height: 70px; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin: 45px 10px 10px 20px;
+    flex-shrink: 0;
+}
+.img_profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.txt_area{
+    width: 80%;
+    padding-left: 30px;
+    padding-right: 20px;
+    margin: 35px 0;
+}
+.title_area{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 17px 0;
+    align-items: center;
+}
+.info_nickname{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin-right: 10px;
+}
+.txt_review{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    margin: 10px 0 10px 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 4.8em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+}
+.img_review{
+    width: 200px;
+    margin: 20px 10px 10px 0;
+    object-fit: cover;
+}
+.wrap_like { /*like 영역*/
+    display: flex;
+    flex-direction: column;
+    width: 27px;
+    height: 27px; 
+    margin: 45px 20px 5px 10px;
+    align-items: center;
+}
+.img_like {
+    width: 100%;
+}
+.txt_num_like{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 5px;
+    color: var(--common-dark-grey);
+    float: right;
+}
+
+/*화면 반응비 줄어들 시 사진 커지기*/
+@media screen and (max-width: 1000px) {
+    .img_review{
+        width: 95%;
+    }
+}

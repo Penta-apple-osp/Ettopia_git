@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/storeRegister.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reviewRegister.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menuRegister.css') }}"> 
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/reviewRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/menuRegister.js') }}" defer></script>
+
+</head>
+<body>
+    <!--헤더 영역-->
+    <nav class="nav">
+        <div class="nav_ettopia">
+            <img class="logo_ettopia" height="30" src="{{ url_for('static', filename='logo/logo_ettopia_pic.png') }}" alt="Ettopia Logo">
+            <a class="txt_ettopia">가게 등록</a>
+        </div>
+    </nav>
+    
+    <form action="/submit_img_store" method="post" enctype="multipart/form-data" >
+        
+   
+    <!--가게대표사진업로드 영역-->
+    <div id="wrap_img">
+        <div id="wrap_img_upload">
+            <!--이곳에 업로드한 이미지 div가 js로 인해 추가된다.-->
+            <img id="img_store_temp" src="">
+            <!--업로드 버튼-->
+            <div id="wrap_post" >
+                <div class="btn_upload">
+                    <label for="chooseFile">
+                        <img class="img_file_input" src="{{ url_for('static', filename='icon/icon_upload_picture.png') }}">
+                    </label>
+                </div>
+                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this, img_store_temp, wrap_img_upload, wrap_post, wrap_delete, wrap_img)">
+            </div>
+
+            <!--삭제 버튼-->
+            <div id="wrap_delete" method="post" enctype="multipart/form-data">
+                <div class="btn_delete" onclick="deleteFile(img_store_temp, wrap_img_upload, chooseFile, wrap_img_upload, wrap_delete)">
+                    <img class="img_file_delete" src="{{ url_for('static', filename='icon/icon_delete_picture.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--가게이름 영역-->
+    <div class="wrap_txt">
+        <p class="info_store_name">가게 이름</p>
+    </div>
+
+    <!--정보 입력 영역-->
+    <div class="wrap_info_list">
+        <p class="txt_food_category">음식종류</p>
+        <div class="fliter">
+            <div class="items_fliter">
+                <!--<a href="#a" class="btn_fliter_location">정문</a>
+                <a href="#a" class="btn_fliter_location">후문</a>-->
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="양식">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="중식">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="일식">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="태국">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="인도">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="음료&카페">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="디저트">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="분식">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="페스트푸드">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="샐러드&샌드위치">
+                <input type="button" class="btn_fliter_food" onclick="change_btn(event)" value="야식">
+            </div>
+        </div>
+    </div>
+    <div class="wrap_info_list">
+        <p class="txt_price_range">가격대</p>
+
+        <div class="make_new_line">
+            <div class="wrap_min_price">
+                <input type="text" class="txt_input_min" name="txt_input_min"> <!--임시적으로 만듬-->
+           <!-- <ul class="list_dropdown">
+                    <li class="wrap_dropdown"><a class="txt_dropdown" href="#a">금액</a>
+                    <ul class="list_dropdown">
+                        <li><a class="item_dropdown" href="#a">1,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">5,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">10,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">15,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">20,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">25,000원</a></li>
+                    </ul class="list_dropdown">
+                    </li>
+                </ul>  -->
+                <p class="txt_desc">원 이상</p>
+            </div>
+            <div class="wrap_min_price">
+                <input type="text" class="txt_input_max" name="txt_input_max"> <!--임시적으로 만듬-->
+               <!--  <ul class="list_dropdown">
+                    <li class="wrap_dropdown"><a class="txt_dropdown" href="#a">금액</a>
+                    <ul class="list_dropdown">
+                        <li><a class="item_dropdown" href="#a">5,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">10,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">15,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">20,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">25,000원</a></li>
+                        <li><a class="item_dropdown" href="#a">30,000원</a></li>
+                    </ul class="list_dropdown">
+                    </li>
+                </ul> -->
+                <p class="txt_desc">원 이하</p>
+            </div>
+        </div>
+    </div>
+    <div class="wrap_info_list">
+        <p class="txt_parking">주차여부</p>
+        <div class="fliter">
+            <div class="items_fliter">
+                <input type="button" class="btn_fliter_park" onclick="change_btn_parking(event)" value="가능">
+                <input type="button" class="btn_fliter_park" onclick="change_btn_parking(event)" value="불가능">
+                <input type="button" class="btn_fliter_park" onclick="change_btn_parking(event)" value="모름">
+            </div>
+        </div>
+    </div>
+    <div class="wrap_info_list">
+        <p class="txt_site">사이트</p>
+        <input type="text" class="txt_input_site" name="txt_input_site" title="사이트 입력" placeholder="인스타그램 아이디, 가게 웹페이지 주소 등 입력">
+    </div>
+
+    <!--사이 띄어주기-->
+    <p class="wrap_space"></p>
+
+    <!--소제목 구역-->
+    <div class="title">
+        <p class="title_menu">메뉴</p>
+        <a href="#a" class="btn_add_menu">
+            <div class="txt_btn">메뉴 추가</div>
+            <img class="img_add_menu" src="{{ url_for('static', filename='icon/icon_circle_add.png') }}" alt="메뉴 등록 화면으로 이동하기 버튼">
+        </a>
+    </div>
+    <div class="wrap_info_list_fixed">
+        <p class="txt_init_menu">등록된 메뉴가 없습니다.</p>
+    </div>
+
+    <!--사이 띄어주기-->
+    <p class="wrap_space"></p>
+
+    <!--소제목 구역-->
+    <div class="title">
+        <p class="title_review">리뷰</p>
+        <a href="#a" class="btn_add_review">
+            <div class="txt_btn">리뷰 추가</div>
+            <img class="img_add_review" src="{{ url_for('static', filename='icon/icon_circle_add.png') }}" alt="메뉴 등록 화면으로 이동하기 버튼">
+        </a>
+    </div>
+    <div class="wrap_info_list_fixed">
+        <p class="txt_init_review">등록된 리뷰가 없습니다.</p>
+    </div>
+
+    <!--사이 띄어주기-->
+    <p class="wrap_space"></p>
+
+    <!--등록하기/등록취소 버튼-->
+    <div class="wrap_register">
+        <button href="#a" class="btn_store_cancel">등록취소</button>
+        <button type="submit"  href="#a" class="btn_store_register">등록하기</button>
+    </div>
+
+    <!--메뉴 추가 팝업창-->
+    {% include 'menuRegister.html' %}
+
+    
+    <!--리뷰 추가 팝업창-->
+    {% include 'reviewRegister.html' %}
+    
+     </form>
+
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+    
+</body>
+</html>

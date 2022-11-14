@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/categoryList.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    
+</head>
+<body>
+    <!--헤더 영역-->
+    {% include 'header.html' %}
+
+    <!--타이틀 영역-->
+    <div class="wrap_txt">
+        <p class="title_category">디저트 가게 리스트</p>
+        <p class="desc_category">공부하느라 떨어진 당 충전!</p>
+    </div>
+
+    <!--가게 리스트 영역-->
+    <div class="wrap_store_list">
+        <div class="wrap_toplist">
+            <div class="wrap_store_area">
+                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_name">가게 이름</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                    </div>
+                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
+                    <p class="info_time">운영 시간: 08:00~22:00</p>
+                    <a href="/storeDetail" class="btn_more">더보기 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_toplist">
+            <div class="wrap_store_area">
+                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_name">가게 이름</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                    </div>
+                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
+                    <p class="info_time">운영 시간: 08:00~22:00</p>
+                    <a href="/storeDetail" class="btn_more">더보기 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_toplist">
+            <div class="wrap_store_area">
+                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_name">가게 이름</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                    </div>
+                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
+                    <p class="info_time">운영 시간: 08:00~22:00</p>
+                    <a href="/storeDetail" class="btn_more">더보기 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_toplist">
+            <div class="wrap_store_area">
+                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
+                <div class="txt_area">
+                    <div class="title_area">
+                        <div class="info_name">가게 이름</div>
+                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                    </div>
+                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
+                    <p class="info_time">운영 시간: 08:00~22:00</p>
+                    <a href="/storeDetail" class="btn_more">더보기 ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
+    
+</body>
+</html>
