@@ -1,0 +1,18 @@
+<form method="post" enctype="multipart/form-data" action="/submit_review_post"> <!--submit_menu_post-->
+<div><br><br>
+    <label for="name">Restaurant name: {{data.store_name}}</label>
+    <br><br>
+</div>
+<div><br><br>
+    <label for="review">리뷰 작성: </label>
+    <input type="text" name="review" id="review" required><br><br>
+</div>
+
+<div>
+    <label for="img">Food Image upload : </label>
+    <input type="file" name="file" /><br><br>
+</div> 
+<div>
+    <input type="submit" value="Submit!"><br><br>
+</div>
+</form>

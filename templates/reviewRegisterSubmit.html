@@ -4,10 +4,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reviewRegister.css') }}">
 </head>
 <body> 
-    <div class="warp_popup_review"> 
+    <form class="warp_popup_review" action="/register_review" method="post"> 
         <div class="warp_body wrap_review">
             <div class="popup_head">
-                <p class="txt_title">{{data.store_name}} 리뷰 등록</p>
+                <p class="txt_title">리뷰 등록</p>
             </div>
             <div class="popup_body">
                 <!--리뷰 이미지 업로드 구역-->
@@ -44,14 +44,14 @@
                         <input type="radio" id="star1" class="rating" name="rating" value="1" /><label for="star1"></label>
                     </div>    
                 </div>
-                <textarea name="input_review" id="input_review" rows="9" cols="33" placeholder="리뷰 내용을 입력해주세요."></textarea>
+                <textarea id="input_review" name="story"rows="9" cols="33" placeholder="리뷰 내용을 입력해주세요."></textarea>
             </div>
             <div class="popup_foot">
                 <!--등록하기/등록취소 버튼-->
                     <a href="#a" class="btn_review_cancel" 
                        onclick="deleteFile(img_review_temp, wrap_img_upload_review, chooseReviewFile, wrap_img_upload_review, wrap_delete_review)">등록취소</a>
-                    <a href="#a" class="btn_review_register">등록하기</a>
+                    <button type="submit" class="btn_review_register">등록하기</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>

@@ -4,13 +4,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menuRegister.css') }}"> 
 </head>
 <body>
-    <div class="wrap_popup_menu"> 
+    <form class="wrap_popup_menu" action="/register_menu" method="post"> 
         <div class="wrap_body wrap_menu">
                 <div class="popup_head">
                 
                 <!--해당 영역에 메뉴 등록 화면의 가게 이름을 나타나도록 해야 한다-->
                 
-                <p class="txt_title">{{data.store_name}} 메뉴 등록</p>
+                <p class="txt_title">메뉴 등록</p>
                 </div>
             <div class="popup_body">
                 <div class="wrap_menu_block">
@@ -56,8 +56,8 @@
                 <!--등록하기/등록취소 버튼-->
                 <a href="#a" class="btn_menu_cancel" 
                    onclick="deleteFile(img_menu_temp, wrap_img_upload_menu, chooseMenuFile, wrap_img_upload_menu, wrap_delete_menu)">등록취소</a>
-                <a href="#a" class="btn_menu_register">등록하기</a>
+                <button type="submit" class="btn_menu_register">등록하기</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>

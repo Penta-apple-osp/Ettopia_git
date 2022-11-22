@@ -1,4 +1,15 @@
- .warp_popup_review {
+  form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.warp_popup_review {
     z-index: 2000;
     position: fixed;
     top: 0;
@@ -73,6 +84,7 @@
     transition: all 0.1s;
   }
   .btn_review_cancel{
+    background-color: #fff;
     color: var(--navy);
     border: 0.12em solid var(--navy);
   }
