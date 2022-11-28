@@ -63,10 +63,12 @@
             {% endfor %}
         </div>
     {% else %}
+    <div class="wrap_none_menu">
         <img src="{{ url_for('static', filename='icon/icon_crying.png') }}" height="50" width="50" alt="crying">
         <p style="font-family: 'Noto Sans KR', sans-serif;font-weight: 700; font-size: 17px; color: var(--common-dark-grey)">
         아직 등록된 메뉴가 없어요. 첫 메뉴를 등록해 주세요!
         </p>
+    </div>
     {% endif %}
     <!--
     <div class="list_store_menu">
