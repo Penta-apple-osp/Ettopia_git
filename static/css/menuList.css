@@ -14,7 +14,7 @@
   /*border: 2px solid var(--common-light-grey); 영역 구분을 위해 사용-추후 삭제*/
   overflow: hidden; /*임시 이미지를 위해 사용-추후 삭제*/
 }
-.img_temp_store{ /*임시 이미지-추후 삭제할 것!!!*/
+.img_head_store{ /*임시 이미지-추후 삭제할 것!!!*/
     width: 100%;
     object-fit: cover;
 }

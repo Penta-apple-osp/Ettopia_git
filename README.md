@@ -1,2 +1,2 @@
-# Ettopia_git
-오픈SW플랫폼 과제 제출을 위한 저장소입니다.
+# Ettopia_backend
+'Ettopia'의 벡엔드 개발(flask, liteDB)를 담당하는 레포지토리입니다.

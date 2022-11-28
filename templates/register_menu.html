@@ -1,0 +1,33 @@
+<form method="post" enctype="multipart/form-data" action="/submit_menu_post"> <!--submit_menu_post-->
+<div><br><br>
+    <label for="name">Restaurant name: {{data.store_name}}</label>
+    <br><br>
+</div>
+<div><br><br>
+    <label for="name">Food name: </label>
+    <input type="text" name="name" id="name" required><br><br>
+</div>
+<div>
+    <label for="price">Price: </label>
+    <input type="text" name="price" id="price" required><br><br>
+</div>
+<div>
+    <label for="vegi">Vegetarian Menu (Y/N): </label>
+    <br>
+    <select id="vegi" name="vegi">
+        <option value="Y">Yes</option>
+        <option value="N" selected>No</option>
+    </select><br><br>
+</div>
+<div><br><br>
+    <label for="allergy">Allergy related information: </label>
+    <input type="text" name="allergy" id="allergy" required><br><br>
+</div>
+<div>
+    <label for="img">Food Image upload : </label>
+    <input type="file" name="file" /><br><br>
+</div> 
+<div>
+    <input type="submit" value="Submit!"><br><br>
+</div>
+</form>

@@ -5,6 +5,38 @@
 
 @import url('style.css');
 
+/*프로필 이미지 영역*/
+.wrap_inform_show{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_modify_profile{
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.img_modify_profile{
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  margin-top: 4px;
+}
+.txt_modify_profile{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--common-dark-grey);
+  text-decoration: none;
+  margin: 0 3px;
+  margin-top: 4px;
+}
+
+.wrap_space{
+    margin: 17px;
+}
+
 /*제목의 타이핑 효과*/
   .wrap_txt{
     text-align: center;
@@ -122,170 +154,6 @@
   transition-timing-function: var(--ease-out);  
  }  
 
-
-  .wrap_profile_block{
-    position: relative;
-    width: 80%;
-    padding: 20px;
-    margin: 0 auto;
-    box-shadow:  
-        0 0 0 0 white, 
-        0 1.5px 0 0 #D9D9D9, 
-        0 0 0 0 white, 
-        0 0 0 0 white, 
-        0 1.0px 0 0 #D9D9D9 inset;
-    display : flex;
-    align-items : center;
-    justify-content: flex-start;
-}
-
-/*프로필 이미지 영역*/
-#wrap_img_profile{
-  width:200px;
-  height:200px;
-  position: static;
-  object-fit: cover;
-  margin-left: 3%;
-}
-#wrap_img_upload_profile{
-  width:100%;
-  height:100%;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden; /*overflow: scroll 쓰면 사진 넘칠 떄 스크롤하는 거 할 수 있음.*/
-  box-sizing: border-box;
-  background-color: var(--white);
-  border: 2px dashed var(--common-light-grey); /*영역 구분을 위해 사용-추후 삭제*/
-}
-.img_profile_temp{
-  width:100%;
-  height:100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  display: block;
-}
-/*이미지 업로드 버튼*/
-.btn_upload_profile {
-  position: absolute;
-  bottom: 0px;
-  right: 3px;
-  display: flex;
-  justify-content: flex-end;
-}
-.img_profile_input {
-  cursor: pointer;
-  width:30px;
-  height:30px;
-  padding: 5px;
-  filter: drop-shadow(2px 2px 2px rgb(172, 172, 172));
-}
-/* 못생긴 기존 input 숨기기 */
-#chooseMenuFile {
-  visibility: hidden;
-}
-
-/*이미지 삭제 버튼*/
-#wrap_delete_profile *{
-  visibility: hidden;
-}
-
-.btn_delete_profile {
-  position: absolute;
-  top: 5px; 
-  right: 5px;
-  display: flex;
-  justify-content: flex-end;
-}
-.img_profile_delete {
-  cursor: pointer;
-  width:15px;
-  height:15px;
-  margin: 5px;
-}
-
-.wrap_inform_show{
-  padding-left: 10%;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-}
-
-.txt_nickname, .txt_email{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-  text-align: left;
-  font-size: 20px;
-  margin: 3px 0 5px 6px;
-  align-self: flex-start;
-  flex-shrink: 0;
-}
-
-.txt_show_nickname, .txt_show_email{
-  width: 90%;
-  height: 35px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  margin-top: 5px;
-  border: 0;
-  color: var(--navy);
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  outline: none;
-  padding-left: 15px;
-  padding-top: 3px;
-  background-color: var(--common-light-grey);
-}
-
-/*프로필 수정할 때 필요한 부분*/
-.wrap_modify_profile{
-  width: 80%;
-  padding: 10px 20px 10px 20px;
-  margin: 0 auto;
-  box-shadow:  /*리뷰 사이사이 선 나누기*/
-      0 0 0 0 white, 
-      0 1.5px 0 0 #D9D9D9, 
-      0 0 0 0 white, 
-      0 0 0 0 white, 
-      0 1.0px 0 0 #D9D9D9 inset;
-  display : flex;
-  align-items : center;
-  justify-content: center;
-}
-
-.txt_title{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: white;
-    margin: 15px 20px;
-  }
-
-.btn_modify_profile{
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.img_modify_profile{
-  width: 20px;
-  height: 20px;
-  align-self: center;
-  margin-top: 4px;
-}
-.txt_modify_profile{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--common-dark-grey);
-  text-decoration: none;
-  margin: 0 3px;
-  margin-top: 4px;
-}
 
 /*창의 크기가 작아지면 팝업창도 같이 작아짐*/
 @media screen and (max-width: 800px) {

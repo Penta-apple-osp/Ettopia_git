@@ -1,8 +1,11 @@
+/*음식 카테고리의 버튼 누르면 누른 상태를 유지하고, 다른 버튼 누르면 기존 버튼을 삭제하고, 버튼이 눌리는 순간 폼에 제출할 값을 바꾸어준다.*/
 function change_btn(e) {
-	var btns = document.querySelectorAll(".btn_fliter_food");
+	var btns = document.querySelectorAll(".btn_filter_food");
 	btns.forEach(function(btn, i) {
 		if(e.currentTarget == btn) {
 			btn.classList.add("active");
+            document.getElementById('btn_food_hidden').setAttribute('value', btn.value);
+            console.log(document.getElementById('btn_food_hidden').value);
 		}
 		else {
 			btn.classList.remove("active");
@@ -10,12 +13,14 @@ function change_btn(e) {
 	});
 	console.log( e.currentTarget );
 }
-
+/*주차 여부의 버튼 누르면 누른 상태를 유지하고, 다른 버튼 누르면 기존 버튼을 삭제하고, 버튼이 눌리는 순간 폼에 제출할 값을 바꾸어준다.*/
 function change_btn_parking(e) {
-	var btns = document.querySelectorAll(".btn_fliter_park");
+	var btns = document.querySelectorAll(".btn_filter_park");
 	btns.forEach(function(btn, i) {
 		if(e.currentTarget == btn) {
 			btn.classList.add("active");
+            document.getElementById('btn_park_hidden').setAttribute('value', btn.value);
+            console.log(document.getElementById('btn_park_hidden').value);
 		}
 		else {
 			btn.classList.remove("active");
@@ -24,73 +29,22 @@ function change_btn_parking(e) {
 	console.log( e.currentTarget );
 }
 
-/*이미지 파일 업로드하면 화면에 보여주기*/
-function loadFile(input, imgTemp, imgContainer, btnUpload, btnDelete, wrap) {
-    var file = input.files[0];	//선택된 파일 가져오기
-
-    //미리 만들어 놓은 이미지 div 에 이미지 보이기
-    //var newImage = document.getElementById("img_store_temp");
-    var newImage = imgTemp;
-
-    //이미지 source 가져오기
-    newImage.src = URL.createObjectURL(file);
+/*드롭다운이 눌리면 해당 숫자가 보이도록 하고, 드롭다운이 눌리는 순간 폼에 제출할 값을 바꾸어준다.*/
+/* 매개변수 설명: txtForChange는 드롭다운에서 선택한 값, txtTarget는 선택한 값이 보이는 위치, valueHidden는 폼 제출 시 제출될 hidden 타입 input*/
+function view_dropdown_price(txtForChange, txtTarget, valueHidden){
+    var txt = txtForChange;
+    console.log('드롭다운 클릭: ' + txt);
+    var target = txtTarget;
+    target.innerHTML = txt;
     
-    newImage.style.visibility = "visible"; //화면에 보이게 만든다.
-    newImage.style.width = "100%";
-    newImage.style.objectFit = "cover";
-    newImage.style.position = "absolute";
-    //이미지 중심축 기준으로 보이게 만든다.
-    newImage.style.top = "50%"; 
-    newImage.style.left = "50%";
-    newImage.style.transform = "translate(-50%, -50%)";
+    valueHidden.setAttribute('value', txt); /*폼에 제출할 값 변경*/
+}
 
-   //기존의 border 없애고 새로운 이미지를 첫 번째 자식 요소로 넣기
-    //var container = document.getElementById('wrap_img_upload');
-    var container = imgContainer;
-    container.style.border = "none";
-
-    //업로드 버튼 더 이상 안 보이게 하기
-    //var childNodes = document.getElementById("wrap_post").getElementsByTagName('*');
-    var childNodes = btnUpload.getElementsByTagName('*');
-    for (var node of childNodes) {
-        node.style.visibility = "hidden";
-    }
-
-    //삭제 버튼 보이게 하기
-    //var childNodes = document.getElementById("wrap_delete").getElementsByTagName('*');
-    var childNodes = btnDelete.getElementsByTagName('*');
-    for (var node of childNodes) {
-        node.style.visibility = "visible";
-    }
-};
-
-
-function deleteFile(imgOld, btnUpload, fileChoose, imgContainer, btnDelete) {
-    //기존 이미지 삭제
-    //var oldImage = document.getElementById("img_store_temp");
-    var oldImage = imgOld;
-    oldImage.src = "";
-
-    //업로드 버튼 다시 보이게 하기
-    //var childNodes = document.getElementById("wrap_post").getElementsByTagName('*');
-    var childNodes = btnUpload.getElementsByTagName('*');
-    for (var node of childNodes) {
-        node.style.visibility = "visible";
-    }
-    //var chooseFile = document.getElementById("chooseFile");
-    var chooseFile = fileChoose;
-    chooseFile.style.visibility = "hidden";
-
-    //border 다시 보이게 하기
-    //var container = document.getElementById('wrap_img_upload');
-    var container = imgContainer;
-    container.style.border = "2px dashed var(--common-light-grey)";
-
-    //삭제 버튼 더 이상 안 보이게 하기
-    //var childNodes = document.getElementById("wrap_delete").getElementsByTagName('*');
-    var childNodes = btnDelete.getElementsByTagName('*');
-    for (var node of childNodes) {
-        node.style.visibility = "hidden";
-    }
-};
-
+function view_dropdown_hour(txtForChange, txtTarget, valueHidden){
+    var txt = txtForChange;
+    console.log('드롭다운 클릭: ' + txt);
+    var target = txtTarget;
+    target.innerHTML = txt;
+    
+    valueHidden.setAttribute('value', txt); /*폼에 제출할 값 변경*/
+}

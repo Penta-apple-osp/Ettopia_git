@@ -9,6 +9,7 @@
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/reviewRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/imgUploadDelete.js') }}" defer></script>
 </head>
 <body>
     <!--헤더 영역-->
@@ -34,6 +35,8 @@
 
     <!--리뷰 리스트 영역-->
     <div class="wrap_review_list">
+        {% if total > 0 %}
+        {% for data in datas %}
         <div class="wrap_reviewblock">
             <div class="wrap_review_area">
                 <div class="wrap_profile">
@@ -48,49 +51,27 @@
                         <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
                         <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
                     </div>
-                    <p class="txt_review">리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
+                    <p class="txt_review">
+                        {{data.review_txt}}
                     </p>
-                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                    <img class="img_review" src="{{data.img_path}}" alt="가게 대표사진">
                     <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
                 </div>
                 <div class="wrap_like">
                     <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
-                    <p class="txt_num_like">10</p>
+                    <p class="txt_num_like">{{data.like_num}}</p>
                 </div>
             </div>
         </div>
-        <div class="wrap_reviewblock">
-            <div class="wrap_review_area">
-                <div class="wrap_profile">
-                    <img class="img_profile" src="https://via.placeholder.com/100x100.png/ddd/ddd">
-                </div>
-                <div class="txt_area">
-                    <div class="title_area">
-                        <div class="info_nickname">닉네임</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                    </div>
-                    <p class="txt_review">리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 
-                        리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다. 리뷰 내용을 여기에 담습니다.
-                    </p>
-                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
-                </div>
-                <div class="wrap_like">
-                    <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
-                    <p class="txt_num_like">10</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+        {% else %}
+            <img src="{{ url_for('static', filename='icon/icon_crying.png') }}" height="50" width="50" alt="crying">
+            <p style="font-family: 'Noto Sans KR', sans-serif;font-weight: 700; font-size: 17px; color: var(--common-dark-grey)">
+            아직 등록된 리뷰가 없어요. 첫 리뷰를 등록해 주세요!
+            </p>
+        {% endif %}
+        
+        <!--예시로 남겨두기-->
         <div class="wrap_reviewblock">
             <div class="wrap_review_area">
                 <div class="wrap_profile">
@@ -123,7 +104,7 @@
     </div>
 
     <!--리뷰 추가 팝업창-->
-    {% include 'reviewRegister.html' %}
+    {% include 'reviewRegisterSubmit.html' %}
 
     <!--푸터 영역-->
     {% include 'footer.html' %}
