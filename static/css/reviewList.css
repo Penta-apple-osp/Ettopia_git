@@ -191,6 +191,9 @@
     color: var(--common-dark-grey);
     float: right;
 }
+.wrap_none_review{
+    text-align: center;
+}
 
 /*화면 반응비 줄어들 시 사진 커지기*/
 @media screen and (max-width: 1000px) {
