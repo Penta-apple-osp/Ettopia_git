@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/categoryList.css') }}">
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/categoryList.js') }}" defer></script>
     
 </head>
 <body>
@@ -14,70 +15,56 @@
 
     <!--타이틀 영역-->
     <div class="wrap_txt">
-        <p class="title_category">디저트 가게 리스트</p>
-        <p class="desc_category">공부하느라 떨어진 당 충전!</p>
+        <p class="title_category">{{category}} 가게 리스트</p>
+        <p class="desc_category">{{desc}}</p>
     </div>
-
+    <form style="margin: 0; padding: 0; width: 0; height: 0; background-color:transparent; border:0px;" method="POST">
+        <input name="value_category" id="value_category" type="hidden" value="{{category}}">
+        <input name="page" id="page" type="hidden" value="">
+        <button style="margin: 0; padding: 0; width: 0; height: 0; background-color:transparent; border:0px;"
+                type="submit" name="btn_category_info" id="btn_category_info"></button>
+    </form>
+    {% if total > 0 %}
     <!--가게 리스트 영역-->
     <div class="wrap_store_list">
+        {% for data in datas %}
         <div class="wrap_toplist">
             <div class="wrap_store_area">
-                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
+                <div class="container_img_toplist">
+                    <img class="img_toplist" src="{{data[1].img_path}}" alt="가게 대표사진">
+                </div>
                 <div class="txt_area">
                     <div class="title_area">
-                        <div class="info_name">가게 이름</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                        <div class="info_name">{{data[1].store_name}}</div>
+                        <div class="wrap_star">
+                            <i data-star="{{data[1].store_avg}}"></i>
+                        </div>  
                     </div>
-                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
-                    <p class="info_time">운영 시간: 08:00~22:00</p>
-                    <a href="/storeDetail" class="btn_more">더보기 ></a>
+                    <p class="info_address">가게 주소: {{data[1].addr}}</p>
+                    <p class="info_time">운영 시간: {{data[1].hour_open}}~{{data[1].hour_close}}</p>
+                    <a href="/storeDetail/{{category}}/{{data[1].store_name}}/" class="btn_more">더보기 ></a>
                 </div>
             </div>
         </div>
-        <div class="wrap_toplist">
-            <div class="wrap_store_area">
-                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
-                <div class="txt_area">
-                    <div class="title_area">
-                        <div class="info_name">가게 이름</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
-                    </div>
-                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
-                    <p class="info_time">운영 시간: 08:00~22:00</p>
-                    <a href="/storeDetail" class="btn_more">더보기 ></a>
-                </div>
-            </div>
-        </div>
-        <div class="wrap_toplist">
-            <div class="wrap_store_area">
-                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
-                <div class="txt_area">
-                    <div class="title_area">
-                        <div class="info_name">가게 이름</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
-                    </div>
-                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
-                    <p class="info_time">운영 시간: 08:00~22:00</p>
-                    <a href="/storeDetail" class="btn_more">더보기 ></a>
-                </div>
-            </div>
-        </div>
-        <div class="wrap_toplist">
-            <div class="wrap_store_area">
-                <img class="img_toplist" src="https://via.placeholder.com/250x180.png/ddd/ddd" alt="가게 대표사진">
-                <div class="txt_area">
-                    <div class="title_area">
-                        <div class="info_name">가게 이름</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
-                    </div>
-                    <p class="info_address">가게 주소: 서울특별시 서대문구 이화여대길 52번(대현동 11-1번지)</p>
-                    <p class="info_time">운영 시간: 08:00~22:00</p>
-                    <a href="/storeDetail" class="btn_more">더보기 ></a>
-                </div>
-            </div>
+        {% endfor %}
+    </div>
+    <!-- 페이지네이션을 위한 코드 시작 -->
+    <div class="page-wrap">
+        <div class="page-nation">
+            <ul>
+                <li>
+                {% for i in range(page_count) %}
+                    <a href="#a" onclick="pageChange({{i}})" color="black">{{i+1}}</a>
+                {% endfor %}
+                </li>
+            </ul>
         </div>
     </div>
-    
+    {% else %}
+    <p>등록된 맛집이 없습니다. </p>
+    {% endif %}
+
+    <div class="dummy_page"></div>
     <!--푸터 영역-->
     {% include 'footer.html' %}
     

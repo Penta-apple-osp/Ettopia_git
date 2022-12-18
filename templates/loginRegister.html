@@ -15,6 +15,12 @@
      <!--헤더 영역-->
     {% include 'header.html' %}
     
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+        <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
+
     <!--배경의 별 영역-->
     <div class="bg">
       <div class="z-3">
@@ -80,46 +86,8 @@
         <!--사이 띄어주기-->
     <p class="wrap_space_bottom"></p>
 
-    <!-- FOOTER START -->
-    <div class="footer">
-      <div class="contain">
-        <div class="col">
-            <h1>About Pentapple</h1>
-            <p class = "txt">Our mission is to provide a bond between people <br>making a living near Ewha.<br>
-                We provide a service for the convenience of all users <br> when they are eating, playing, studying, and etc.
-          </div>
-        <div class="col">
-          <h1>Company</h1>
-          <ul>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Imprint</li>
-            <li>News</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h1>Support</h1>
-          <ul>
-            <li>Contact Us</li>
-            <li>FAQs</li>
-            <li>Privacy Policy</li>
-          </ul>
-        </div>
-        <div class="txt">
-              <br>
-              <div style="font-size: 14px; font-weight: 400; margin-left: 40px;">
-              E-mail : pentapple@gmail.com<br>
-              Phone : 123-4567-8910<br><br>
-              </div>
-              <hr style="border: solid 1px #999999; width: 120%; margin-left: 40px;">
-              <div style="font-size: 13px; font-weight: 300; margin-left: 40px;"><br>Copyright © 2022 Pentapple Company • All rights reserved</div>
-
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-    <!-- END OF FOOTER -->
-    
+    <!--푸터 영역-->
+    {% include 'footer.html' %}
     
 </body>
 </html>

@@ -1,4 +1,15 @@
-  .warp_popup_menu {
+ form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.wrap_popup_menu {
     z-index: 2000;
     position: fixed;
     top: 0;
@@ -8,7 +19,7 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 
-  .warp_popup_menu.show {
+  .wrap_popup_menu.show {
     display: flex;
   }
 
@@ -69,6 +80,7 @@
     transition: all 0.1s;
   }
   .btn_menu_cancel{
+    background-color: #fff;
     color: var(--navy);
     border: 0.12em solid var(--navy);
   }
@@ -82,12 +94,6 @@
     width: 80%;
     padding: 20px;
     margin: 0 auto;
-    box-shadow:  /*리뷰 사이사이 선 나누기*/
-        0 0 0 0 white, 
-        0 1.5px 0 0 #D9D9D9, 
-        0 0 0 0 white, 
-        0 0 0 0 white, 
-        0 1.0px 0 0 #D9D9D9 inset;
     display : flex;
     align-items : center;
     justify-content: flex-start;
@@ -230,7 +236,7 @@
 
 /*창의 크기가 작아지면 팝업창도 같이 작아짐*/
 @media screen and (max-width: 800px) {
-  .warp_body{
+  .wrap_body{
     width: 500px;
   }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reviewRegister.css') }}">
+</head>
+<body> 
+    <form class="warp_popup_review" action="/register_review/{{category}}/{{store_name}}/" method="post" enctype="multipart/form-data"> 
+        <div class="warp_body wrap_review">
+            <div class="popup_head">
+                <p class="txt_title">{{store_name}} 리뷰 등록</p>
+            </div>
+            <div class="popup_body">
+                <!--리뷰 이미지 업로드 구역-->
+                <div id="wrap_img_review">
+                    <div id="wrap_img_upload_review">
+                        <!--이곳에 업로드한 이미지 div가 js로 인해 추가된다.-->
+                        <img id="img_review_temp" src="">
+                        <!--업로드 버튼-->
+                        <div id="wrap_post_review">
+                            <div class="btn_upload_review">
+                                <label for="chooseReviewFile">
+                                    <img class="img_reviewfile_input" src="{{ url_for('static', filename='icon/icon_upload_picture.png') }}">
+                                </label>
+                            </div>
+                            <input type="file" id="chooseReviewFile" name="chooseReviewFile" accept="image/*" 
+                                   onchange="loadFile(this, img_review_temp, wrap_img_upload_review, wrap_post_review, wrap_delete_review)"
+                                   onclick="this.value=null;">
+                        </div>
+                        <!--삭제 버튼-->
+                        <div id="wrap_delete_review" method="post" enctype="multipart/form-data">
+                            <div class="btn_delete_review" onclick="deleteFile(img_review_temp, wrap_img_upload_review, chooseReviewFile, wrap_img_upload_review, wrap_delete_review)">
+                                <img class="img_reviewfile_delete" src="{{ url_for('static', filename='icon/icon_delete_picture.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap_rating">
+                    <p class="txt_rating">별점</p>
+                    <div class="rating"> <!--여기 부분만 있으면 됨-->
+                        <input type="radio" id="star5" class="rating" name="rating" value="5" /><label for="star5"></label>
+                        <input type="radio" id="star4" class="rating" name="rating" value="4" /><label for="star4"></label>
+                        <input type="radio" id="star3" class="rating" name="rating" value="3" /><label for="star3"></label>
+                        <input type="radio" id="star2" class="rating" name="rating" value="2" /><label for="star2"></label>
+                        <input type="radio" id="star1" class="rating" name="rating" value="1" /><label for="star1"></label>
+                    </div>    
+                </div>
+                <textarea name="input_review" id="input_review" rows="9" cols="33" placeholder="리뷰 내용을 입력해주세요."></textarea>
+            </div>
+            <div class="popup_foot">
+                <!--등록하기/등록취소 버튼-->
+                <a href="#a" class="btn_review_cancel" 
+                   onclick="deleteFile(img_review_temp, wrap_img_upload_review, chooseReviewFile, wrap_img_upload_review, wrap_delete_review)">등록취소</a>
+                <button type="submit" class="btn_review_register">등록하기</button>
+            </div>
+        </div>
+    </form>
+</body>

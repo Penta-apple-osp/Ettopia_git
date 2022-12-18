@@ -12,17 +12,60 @@
     3. 설정된 값을 바탕으로 지도 필터링
 */
 
+
+
 /*카테고리 필터링(음식/지역) 버튼 구역*/
-.fliter{
+
+.btn_category_left{
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    visibility: hidden;
+    border: none;
+    background-color: white;
+    display: block;
+    height: 30px;
+    border-radius: 0px 15px 15px 0px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+}
+
+.btn_category_right{
+    position: -webkit-sticky;
+    position: sticky;
+    right: 0;
+    visibility: hidden;
+    border: none;
+    background-color: white;
+    display: block;
+    height: 30px;
+    border-radius: 15px 0px 0px 15px;
+    box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+}
+
+.img_category_scroll{
+    height: 20px;
+}
+
+.filter{
     width:80%;
     align-items: center;
 }
-.items_fliter{
+.items_filter{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
-.btn_fliter_food, .btn_fliter_location{
+.items_filter::-webkit-scrollbar {
+	display: none;
+}
+.items_filter::-webkit-scrollbar-button:start:decrement, .items_filter::-webkit-scrollbar-button:end:increment{
+    height: 0;
+    width: 0;
+}
+.btn_filter_food, .btn_filter_location{
+    background-color: #fff;
     display: inline-block;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
@@ -35,43 +78,316 @@
     box-sizing: border-box;
     transition: all 0.2s;
   }
-  .btn_fliter_food{
+  .btn_filter_food{
     color: var(--navy);
     border: 0.12em solid var(--navy);
   }
-  .btn_fliter_location{
+  .btn_filter_location{
     color: var(--pink);
     border: 0.12em solid var(--pink);
   }
-  .btn_fliter_food:hover {
+  .btn_filter_food:hover, .btn_filter_food.active{
     color: #ffffff;
     background-color: var(--navy);
     font-weight: 700;
   }
-  .btn_fliter_location:hover{
+  .btn_filter_location:hover, .btn_filter_location.active{
     color: #ffffff;
     background-color: var(--pink);
     font-weight: 700;
   }
 
-  /* (구현 미완료) 지도 구역
-    구현 미완료 목록:
-    1. API 키가 연결되어 있지 않음
-  */
-  #map{
+/*지도와 마커의 스타일 구역*/
+.map_wrap, .map_wrap * {
+    margin: 0;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:12px;
+}
+.map_wrap {
+    position:relative;
     width:80%;
     height:400px;
+    margin: 8px 0 32px 0;
+    /* border: 2px solid var(--dark-green);*/
     border-radius: 16px;
-    margin: 8px 0 8px 0;
-    border: 2px solid var(--light-green); /*영역 구분을 위해 사용-추후 삭제*/
-    overflow: hidden; /*임시 이미지를 위해 사용-추후 삭제*/
-  }
+    overflow: hidden;
+}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{
+    color:#000;
+    text-decoration: none;
+}
 
-  .temp_map{ /*임시 이미지-추후 삭제할 것!!!*/
-    height: 100%;
-    margin: 0 auto;
-    object-fit: cover;
-  }
+/*검색하기 구역*/
+.option{
+    z-index: 15;
+    position: absolute;
+    top: 35px; 
+    left: 10px;
+    text-align: center;
+}
+#form_search{
+    overflow: hidden;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+    box-shadow: 0 3px 3px var(--common-light-grey);
+}
+#keyword{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+#btn_search{
+    box-sizing: border-box;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 900;
+    transition: all 1s;
+    border: 0;
+    outline: 0;
+}
+#form_search:hover{
+    width: 260px;
+    cursor: pointer;
+}
+#form_search:hover #keyword{
+    display: block;
+}
+#form_search:hover #btn_search{
+    background: #07051a;
+    color: white;
+}
+#form_search:hover #menu_wrap{
+    display: block;
+}
+
+
+#form_search.active{
+    width: 260px;
+    cursor: pointer;
+}
+#keyword.active{
+    display: block;
+}
+#btn_search.active{
+    background: #07051a;
+    color: white;
+}
+#menu_wrap.active{
+    display: block;
+}
+
+/*검색 결과 가게 목록 구역*/
+#menu_wrap {
+    position:absolute;
+    top:43px;
+    left:0;
+    bottom:0;
+    width:250px;
+    margin:10px 0 30px 10px;
+    padding:5px;
+    overflow-y:auto;
+    background:rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    font-size:12px;
+    border-radius: 10px;
+    display: none;
+}
+.bg_white {
+    background:#fff;
+    z-index: 10;
+    display: none;
+}
+#menu_wrap hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #5F5F5F;
+    margin:3px 0;
+}
+#placesList li {
+    list-style: none;
+}
+#placesList .item {
+    position:relative;
+    border-bottom:1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+}
+#placesList .item span {
+    display: block;
+    margin-top:4px;
+}
+#placesList .item h5, #placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#placesList .item .info{
+    padding:10px 0 10px 55px;
+}
+#placesList .info .gray {
+    color:#8a8a8a;
+}
+#placesList .info .jibun {
+    padding-left:26px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+}
+#placesList .info .tel {
+    color: var(--dark-green);
+}
+#placesList .item .markerbg {
+    float:left;
+    position:absolute;
+    width:36px; 
+    height:37px;
+    margin:10px 0 0 10px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}
+#pagination {
+    margin:10px auto;
+    text-align: center;
+}
+#pagination a {
+    display:inline-block;
+    margin-right:10px;
+}
+#pagination .on {
+    font-weight: bold;
+    cursor: default;
+    color:#777;
+}
+/*인포윈도우 스타일 구역*/
+.overlaybox {
+    filter: drop-shadow(5px 5px 5px var(--common-dark-grey));
+    position:relative;
+    width:225px;
+    height: 110px;
+    padding:15px 10px;
+    background-size: cover;
+}
+.overlaybox div, ul {
+    margin:0;
+    padding:0;
+}
+.overlaybox li {
+    /*height: 25px;*/
+    list-style: none;
+}
+.overlaybox .boxtitle {
+    color:#fff;
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.overlaybox .first {
+    position:relative;
+    width:196px;
+    height: 96px;
+    margin-bottom:8px;
+}
+.overlaybox ul {
+    width:100%;
+}
+.overlaybox li {
+    position:relative;
+    margin-bottom:2px;
+    background:#2b2d36;
+    padding:5px 10px;
+    color:#aaabaf;
+    line-height: 1;
+}
+.overlaybox li span {
+    vertical-align: center;
+    display:inline-block;
+}
+.overlaybox li .info {
+    font-size:14px;
+    font-weight:bold;
+    width: 40px;
+}
+.overlaybox li .infowindow_title {
+    font-size:13px;
+}
+.overlaybox li:hover {
+    color:#fff;
+    background: var(--pink);
+}
 
   /*소제목 구역*/
   .title{
@@ -130,7 +446,7 @@
   }
 
   @media screen and (max-width: 1340px){
-    .btn_fliter_food, .btn_fliter_location{
+    .btn_filter_food, .btn_filter_location{
         padding: 0.1em 0.5em;
         margin: 0 0.1em 0.1em 0;
       }
@@ -142,7 +458,10 @@
       }
   }
 
-  
-  
+ @media screen and (max-width: 1102px){
+    .btn_category_left, .btn_category_right{
+        visibility: visible;
+      }
+  }
 
   

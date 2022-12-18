@@ -1,0 +1,9 @@
+{
+  "apiKey": "AIzaSyDu-C3mhLuthS--Opm5buewNjqJ_P6B834",
+  "authDomain": "ettopia-db.firebaseapp.com",
+  "databaseURL": "https://ettopia-db-default-rtdb.firebaseio.com",
+  "projectId": "ettopia-db",
+  "storageBucket": "ettopia-db.appspot.com",
+  "messagingSenderId": "365026786212",
+  "appId": "1:365026786212:web:ca537c19ff5e2015dd1f31"
+}

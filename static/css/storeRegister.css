@@ -15,6 +15,10 @@ form{
     align-items: center;
     overflow-x: hidden;
 }
+
+button{
+    cursor: pointer;
+}
 /*이미지 영역*/
 #wrap_img{
     width:80%;
@@ -78,19 +82,21 @@ form{
     margin: 10px;
 }
 
+.warp_api_info{
+    margin: 20px 0 20px 0;
+    width: 80%;
+}
+
 /*가게이름 영역*/
 .wrap_txt{
-    width: 80%;
     margin-bottom: 10px;
-    margin-top: 30px;
 }
 .info_store_name{
     text-align: left;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
     font-size: 30px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 5px 10px 5px;
     color: black;
 }
 
@@ -104,6 +110,12 @@ form{
         0 0 0 0 white, 
         0 0 0 0 white, 
         0 1.5px 0 0 #D9D9D9 inset;
+    display : flex;
+    align-items : center;
+    justify-content: flex-start;
+}
+.wrap_api_list{
+    margin: 0 auto;
     display : flex;
     align-items : center;
     justify-content: flex-start;
@@ -122,11 +134,20 @@ form{
     align-items : center;
     justify-content: flex-start;
 }
-.txt_food_category, .txt_price_range, .txt_parking, .txt_site{
+.txt_food_category, .txt_price_range, .txt_parking, .txt_working_hour, .txt_site{
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
     font-size: 17px;
     margin: 17px 5px 17px 5px;
+    width: 100px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+.txt_address, .txt_tel{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 5px 5px 5px 5px;
     width: 100px;
     align-self: flex-start;
     flex-shrink: 0;
@@ -137,15 +158,15 @@ form{
 }
 
 /*음식 종류 필터 버튼*/
-.fliter{
+.filter{
     align-items: center;
 }
-.items_fliter{
+.items_filter{
     display: flex;
     flex-wrap: wrap;
     margin: 12px 0 10px 0;
 }
-.btn_fliter_food, .btn_fliter_park{ /*.btn_fliter_location 으로 나중에 후문 정문 여부 추가할 수 있음*/
+.btn_filter_food, .btn_filter_park{ /*.btn_filter_location 으로 나중에 후문 정문 여부 추가할 수 있음*/
     background-color: #fff;
     display: inline-block;
     font-family: 'Noto Sans KR', sans-serif;
@@ -159,24 +180,24 @@ form{
     box-sizing: border-box;
     transition: all 0.1s;
   }
-  .btn_fliter_food, .btn_fliter_park{
+  .btn_filter_food, .btn_filter_park{
     color: var(--navy);
     border: 0.12em solid var(--navy);
   }
 /*
-  .btn_fliter_location{
+  .btn_filter_location{
     color: var(--pink);
     border: 0.12em solid var(--pink);
   }
 */
-  .btn_fliter_food:hover, .btn_fliter_food.active, .btn_fliter_park:hover, .btn_fliter_park.active {
+  .btn_filter_food:hover, .btn_filter_food.active, .btn_filter_park:hover, .btn_filter_park.active {
     color: #ffffff;
     background-color: var(--navy);
     font-weight: 700;
   }
 
 /*
-  .btn_fliter_location:hover{
+  .btn_filter_location:hover{
     color: #ffffff;
     background-color: var(--pink);
     font-weight: 700;
@@ -236,8 +257,8 @@ ul ul li:hover .item_dropdown{
     color: #fff;
 }
 
-/* 가격대 반응형 */
-.wrap_min_price{
+/* 가격대, 영업 시간 반응형 */
+.wrap_min_price, .wrap_hour_open{
     display: flex;
     align-items: center;
     height: 40px;
@@ -272,6 +293,14 @@ ul ul li:hover .item_dropdown{
     padding-left: 10px;
     background-color: var(--common-light-grey);
 }
+.txt_info_address, .txt_info_tel{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--common-dark-grey);
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0 20px 0 5px;
+    flex-shrink: 0;
+}
 
 /*소제목-메뉴와 리뷰*/
 .title{
@@ -299,7 +328,7 @@ ul ul li:hover .item_dropdown{
     background-color: var(--navy);
     min-width : 280px;
 }
-.txt_init_menu, .txt_init_review{
+.txt_init_menu, .txt_init_review, .txt_menu_price_show, .txt_review_show{
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--common-dark-grey);
     font-weight: 500;

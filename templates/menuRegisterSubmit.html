@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menuRegister.css') }}"> 
+</head>
+<body>
+    <form class="wrap_popup_menu" action="/register_menu/{{category}}/{{store_name}}/" method="post" enctype="multipart/form-data"> 
+        <div class="wrap_body wrap_menu">
+                <div class="popup_head">
+                
+                <!--해당 영역에 메뉴 등록 화면의 가게 이름을 나타나도록 해야 한다-->
+                
+                <p class="txt_title">{{category}} {{store_name}} 메뉴 등록</p>
+                </div>
+            <div class="popup_body">
+                <div class="wrap_menu_block">
+                    <!--메뉴 이미지 업로드 구역-->
+                    <div id="wrap_img_menu">
+                        <div id="wrap_img_upload_menu">
+                            <!--이곳에 업로드한 이미지 div가 js로 인해 추가된다.-->
+                            <img id="img_menu_temp" src="">
+                            <!--업로드 버튼-->
+                            <div id="wrap_post_menu">
+                                <div class="btn_upload_menu">
+                                    <label for="chooseMenuFile">
+                                        <img class="img_menufile_input" src="{{ url_for('static', filename='icon/icon_upload_picture.png') }}">
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseMenuFile" name="chooseMenuFile" accept="image/*"
+                                       onchange="loadFile(this, img_menu_temp, wrap_img_upload_menu, wrap_post_menu, wrap_delete_menu)"
+                                       onclick="this.value=null;">
+                            </div>
+                            <!--삭제 버튼-->
+                            <div id="wrap_delete_menu" method="post" enctype="multipart/form-data">
+                                <div class="btn_delete_menu" onclick="deleteFile(img_menu_temp, wrap_img_upload_menu, chooseMenuFile, wrap_img_upload_menu, wrap_delete_menu)">
+                                    <img class="img_menufile_delete" src="{{ url_for('static', filename='icon/icon_delete_picture.png') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap_menu_input">
+                        <p class="txt_name">음식명</p>
+                        <input type="text" name="txt_input_name" class="txt_input_name" title="메뉴 이름 입력" placeholder="메뉴 이름을 입력해주세요.">
+                        <p class="txt_price">가격</p>
+                        <input type="text" name="txt_input_price" class="txt_input_price" title="메뉴 가격 입력" placeholder="메뉴 가격을 입력해주세요.">
+                    </div>
+                </div>
+            </div>
+            <div class="popup_foot">
+                <!--등록하기/등록취소 버튼-->
+                <a href="#a" class="btn_menu_cancel" 
+                   onclick="deleteFile(img_menu_temp, wrap_img_upload_menu, chooseMenuFile, wrap_img_upload_menu, wrap_delete_menu)">등록취소</a>
+                <button type="submit" class="btn_menu_register">등록하기</button>
+            </div>
+        </div>
+    </form>
+</body>
