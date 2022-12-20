@@ -53,6 +53,7 @@ Ettopia
 ## *Ettopia의 데이터베이스*
 Ettopia에서 사용자가 입력한 정보를 저장하고 추후 여러 기능을 위해 저장된 정보들을 불러오는 데이터베이스로 firebase database를 사용했습니다. **직관적으로 어떠한 방식으로 정보가 저장되어 있는 지 확인할 수 있는 장점**을 가졌으나, **키값-속성을 한 쌍씩 무조건 가져야 하며 상대적으로 제한적인 기능을 가진다는 단점**을 지니고 있기 때문에 추후 사용에 유의하시기 바랍니다.
 ‘Ettopia’를 위해 구현한 firebase DB의 구조와 각각의 설명은 다음 그림과 같습니다. 해당 구조는 각자의 프로젝트의 적합하게 변경하거나, 다르게 구현하셔도 됩니다. 그러나 위에서 소개한 database.py는 현재 프로젝트의 firebase 구조에서 데이터를 조회하고 저장하는 코드가 구현되어 있어 변경하셔야 합니다.
+![firebase](https://github.com/Penta-apple-osp/Ettopia_git/blob/Final/firebase.png)
 
 
 ## *Ettopia의 특별한 기능 - 지도 API*
