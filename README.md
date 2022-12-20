@@ -12,7 +12,7 @@ Ettopia의 프론트엔드 개발에서는 팀원 별 개발 파트를 나누어
 
 [펜타애플 티스토리: 구름IDE 사용방법](https://pentaapple.tistory.com/5)
 
-## 프로젝트 구조
+## *프로젝트 구조*
 
 ‘Ettopia’는 flask를 활용하여 구현한 프로젝트입니다. 따라서 flask framework에서 사용하는 프로젝트 구조를 활용합니다. 구체적으로는 다음과 같습니다.
 
