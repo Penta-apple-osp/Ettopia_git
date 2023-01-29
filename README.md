@@ -5,6 +5,7 @@
 
 ## *시현 영상*
 아래 이미지를 클릭하시면 시현 영상을 확인해 보실 수 있습니다.
+
 [![](https://github.com/Penta-apple-osp/.github/blob/main/Ettopia.JPG)](https://drive.google.com/file/d/1OGPVGY9gl9SiaOL2-yxsUWAlw7hD--Ml/view?usp=share_link)
 
 ## *Ettopia의 개발 툴 및 오픈소스 소프트웨어*
