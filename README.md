@@ -1,12 +1,7 @@
 # Ettopia_git
 이화여대 맛집 커뮤니티 웹사이트 'Ettopia'의 최종 프론트엔드 개발(html, css) 및 벡엔드 개발(flask, liteDB)를 담당하는 레포지토리입니다. 해당 README.md는 펜타애플 팀의 Ettopia를 개발하며 작성한 프론트엔드 및 백엔드 관련 코드를 push한 Ettopia_git의 마크다운 파일입니다.
 
-🥘 프로젝트 ‘Ettopia’는 사용자의 편의성 증대와 강한 커뮤니티 소속감 제공을 지향합니다.
-
-## *시현 영상*
-아래 이미지를 클릭하시면 시현 영상을 확인해 보실 수 있습니다.
-
-[![](https://github.com/Penta-apple-osp/.github/blob/main/Ettopia.JPG)](https://drive.google.com/file/d/1OGPVGY9gl9SiaOL2-yxsUWAlw7hD--Ml/view?usp=share_link)
+🥘 프로젝트 ‘Ettopia’는 사용자의 편의성 증대와 강한 커뮤니티 소속감 제공을 목적으로 합니다.
 
 ## *Ettopia의 개발 툴 및 오픈소스 소프트웨어*
 Ettopia의 프론트엔드 개발에서는 팀원 별 개발 파트를 나누어 VS code를 사용하여 코드 작성 후 Github를 통해 코드를 취합했고, 백엔드 개발에서는 GoormIDE에서 Flask를 사용해 Ettopia 개발을 진행하였습니다.
@@ -62,3 +57,8 @@ Ettopia에서 사용자가 입력한 정보를 저장하고 추후 여러 기능
 Ettopia에는 다양한 기능이 존재하지만 그 중 개발 기간에 상당 부분을 차지했던 맛집 지도 기능을 개발할 때 카카오 지도 API를 사용하였습니다. 해당 API는 homePage.html, storeDetail.html에서 활용되었으며 맛집의 위치와 종류에 따라 필터링하여 지도 상에서 사용자가 찾고자하는 맛집을 쉽게 볼 수 있도록 구현하였습니다. 필터링에 대한 자세한 코드는 homePage.html에서 확인할 수 있습니다.
 
 [펜타애플 티스토리: 카카오 지도 API 응용](https://pentaapple.tistory.com/10)
+
+## *시현 영상*
+마지막으로, 아래 이미지를 클릭하시면 시현 영상을 확인해 보실 수 있습니다.
+
+[![](https://github.com/Penta-apple-osp/.github/blob/main/Ettopia.JPG)](https://drive.google.com/file/d/1OGPVGY9gl9SiaOL2-yxsUWAlw7hD--Ml/view?usp=share_link)
