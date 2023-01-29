@@ -4,8 +4,8 @@
 🥘 프로젝트 ‘Ettopia’는 사용자의 편의성 증대와 강한 커뮤니티 소속감 제공을 지향합니다.
 
 ## *시현 영상*
-아래 이미지를 클릭하시면 시현 영상을 확인 가능합니다.
-[![https://github.com/Penta-apple-osp/.github/blob/main/Ettopia.JPG](스크린샷 이미지)](https://drive.google.com/file/d/1OGPVGY9gl9SiaOL2-yxsUWAlw7hD--Ml/view?usp=share_link)
+아래 이미지를 클릭하시면 시현 영상을 확인해 보실 수 있습니다.
+[![](https://github.com/Penta-apple-osp/.github/blob/main/Ettopia.JPG)](https://drive.google.com/file/d/1OGPVGY9gl9SiaOL2-yxsUWAlw7hD--Ml/view?usp=share_link)
 
 ## *Ettopia의 개발 툴 및 오픈소스 소프트웨어*
 Ettopia의 프론트엔드 개발에서는 팀원 별 개발 파트를 나누어 VS code를 사용하여 코드 작성 후 Github를 통해 코드를 취합했고, 백엔드 개발에서는 GoormIDE에서 Flask를 사용해 Ettopia 개발을 진행하였습니다.
