@@ -33,7 +33,7 @@ class DBhandler:
         }
         if self.restaurant_duplicate_check(name, data):
             self.db.child("restaurant").child(data['btn_food_hidden']).push(restaurant_info)
-            print(data,img_path)
+            #print(data,img_path)
             return True
         else:
             return False
@@ -70,6 +70,8 @@ class DBhandler:
             "rating": data['rating'],
             "review_txt": data['input_review'],
             "like_num": 0,
+            "profile_pic": 0, #일단은 이렇게 구현해 놓고 나중에 고치기...
+            "nickname": 0,
             "img_path": "/static/img_user/review/"+img_path
         }
         self.db.child("review").push(review_info)
@@ -77,58 +79,186 @@ class DBhandler:
     
     ########################################
     #리뷰 조회화면, 메뉴 조회화면에서 리뷰와 메뉴를 추가하는 함수
-    #미구현- 메뉴를 중복확인하는 함수
-    def menu_duplicate_check(self, name):
-        menuList = self.db.child("restaurant").get()
-        for res in menuList.each():
-            if res.key() == name:
-                return False
+    def add_menu(self, store_name, data, img_path): 
+        print("메뉴 조회화면에서의 메뉴 추가 함수 실행")
+        menu_info ={
+            "store_name": store_name,
+            "menu_name": data['txt_input_name'],
+            "menu_price": data['txt_input_price'],
+            "img_path": "/static/img_user/menu/"+img_path
+        }
+        if self.menu_duplicate_check(store_name, data['txt_input_name']):
+            self.db.child("menu").push(menu_info)
+            print("메뉴 등록 정상적으로 완료")
+            return True
+        else:
+            return False
+        
+    def add_review(self, store_name, data, img_path, nickname, profile): 
+        print("리뷰 조회화면에서의 리뷰 추가 함수 실행")
+        review_info ={
+            "store_name": store_name,
+            "rating": data['rating'],
+            "review_txt": data['input_review'],
+            "like_num": 0,
+            "profile_pic": profile, #고침
+            "nickname": 0,
+            "img_path": "/static/img_user/review/"+img_path,
+            "reviewer_nickname": nickname
+        }
+        self.db.child("review").push(review_info)
+        print("리뷰 등록 정상적으로 완료")
         return True
     
-    ########################################
-    #로그인 정보를 DB에 저장하는 코드-아직 ID만 체그, PW는 체크 못함
-    def search_loginInfo(self, idCheck, pwCheck):
-        users = self.db.child("users").get()
-        if users.each() is not None:
-            for user in users.each():
-                print(user.val())
-                if user.key() == idCheck and user.val() == pwCheck:
-                    print(self.db.reference('users').child('idCheck').child('registerPassword'))
+    #메뉴 등록 시 중복 체크하는 함수
+    def menu_duplicate_check(self, store_name, menu_name):
+        print("가게 이름과 메뉴명이 모두 일치하는지 중복 체크중...")
+        menuList = self.db.child("menu").get()
+        if menuList.each() is not None:
+            for menu in menuList.each():
+                value = menu.val()
+                if value['menu_name'] == menu_name and value['store_name'] == store_name:
+                    return False
+            return True
+        else:
+            return True
+        
+    #레스토랑의 리뷰 수 업데이트 하는 함수
+    def update_review_num(self, category, store_name):
+        restaurants = self.db.child("restaurant").child(category).get()
+        if restaurants.each() is not None:
+            for res in restaurants.each():
+                value = res.val()
+                if value['store_name'] == store_name:
+                    old_review_num = value['review_num']
+                    update_review_num = old_review_num + 1 #더하기 1씩 하면 오류가 생길 수 있으므로, len으로 계산하여 업데이트하는 방식 나중에 구현하기...
+                    keyValue = res.key()
+                    self.db.child("restaurant").child(category).child(keyValue).update({"review_num": update_review_num})
+                    print()
                     return True
             return False
         else:
             return False
     
-    #회원가입 정보를 DB에 저장하는 코드
-    def insert_registerInfo(self, name, data):
-        register_info = {
-            "registerNickname": data['registerNickname'],
-            "registerId": data['registerId'],
-            "registerPassword": data['registerPassword']
+    #각 리뷰의 like 수 +1 로 업데이트 하는 함수
+    def update_review_like(self, store_key):
+        reviews = self.db.child("review").get()
+        if reviews.each() is not None:
+            for review in reviews.each():
+                value = review.val()
+                if review.key() == store_key:
+                    old_review_like = value['like_num']
+                    update_review_like = old_review_like + 1 #더하기 1씩 하면 오류가 생길 수 있으므로, len으로 계산하여 업데이트하는 방식 나중에 구현하기...
+                    keyValue = review.key()
+                    self.db.child("review").child(keyValue).update({"like_num": update_review_like})
+                    print()
+                    return update_review_like
+            return False
+        else:
+            return False
+    
+    #해당 사용자의 ID를 firebase에 업데이트함
+    def update_like_table(self, review_key, _id):
+        fake_info ={
+        "fake_value": ""
         }
-        if self.register_duplicate_check(name):
-            self.db.child("users").child(name).set(register_info)
-            print(data)
+        self.db.child("review_like").child(review_key).child(_id).set(fake_info)
+        print()
+        return True
+    
+    def reset_like_table(self, review_key, _id):
+        print("reset_like_table 함수 실행 시작")
+        self.db.child("review_like").child(review_key).child(_id).remove()
+        print("정상적으로 삭제되었습니다.")
+        return True
+    
+    #각 리뷰의 like 수 -1로 업데이트 하는 함수
+    def reset_review_like(self, store_key):
+        reviews = self.db.child("review").get()
+        if reviews.each() is not None:
+            for review in reviews.each():
+                value = review.val()
+                if review.key() == store_key:
+                    old_review_like = value['like_num']
+                    update_review_like = old_review_like - 1 #더하기 1씩 하면 오류가 생길 수 있으므로, len으로 계산하여 업데이트하는 방식 나중에 구현하기...
+                    keyValue = review.key()
+                    if update_review_like >=0:
+                        self.db.child("review").child(keyValue).update({"like_num": update_review_like})
+                    else:
+                        update_review_like = 0
+                        self.db.child("review").child(keyValue).update({"like_num": update_review_like})
+                    print()
+                    return update_review_like
+            return False
+        else:
+            return False
+        
+    #각 리뷰의 누른 like 수 체크하는 함수
+    def check_review_like(self, store_key, _id):
+        reviews = self.db.child("review_like").get()
+        if reviews.each() is not None:
+            for review in reviews.each():
+                value = review.val()
+                if review.key() == store_key:
+                    for name in value:
+                        print("#"*100)
+                        print(name)
+                        print("#"*100)
+                        if name == _id:
+                            print("#"*100)
+                            print(name, _id)
+                            print("#"*100)
+                            return True
+                    return False
+        else:
+            return False
+            
+    ########################################
+    #로그인 정보를 DB와 비교하여 일치하는 id와 pw가 있는지 확인하는 함수
+    def search_loginInfo(self, id_, pw_):
+        users = self.db.child("users").get()
+        if users.each() is not None:
+            for user in users.each():
+                value = user.val()
+                if value['id'] == id_ and value['pw'] == pw_:
+                    return value
+            return False
+        else:
+            return False
+    
+    #회원가입 정보를 DB에 저장하는 코드
+    def insert_user(self, data, pw):
+        register_info = {
+            "nickname": data['registerNickname'],
+            "id": data['registerId'],
+            "profile_pic": 0, #기본 프로필 사진의 값
+            "pw": pw
+        }
+        if self.register_duplicate_check(str(data['registerId'])):
+            self.db.child("users").push(register_info)
+            #print(data)
             return True
         else:
             return False
     
-    #회원가입 정보를 중복 체그하는 코드
-    def register_duplicate_check(self, name):
-        registers = self.db.child("users").get()
-        if registers.each() is not None:
-            for regi in registers.each():
-                if regi.key() == name:
-                    return False
+    #회원가입 정보를 중복 체크하는 코드
+    def register_duplicate_check(self, id_string):
+        users = self.db.child("users").get()
+        #print("users###", users.val())
+        if str(users.val()) == "None": # first registration
             return True
         else:
+            for res in users.each():
+                value = res.val()
+                if value['id'] == id_string:
+                    return False
             return True
     
     ########################################
     #카테고리 리스트에 보여주기 위해 restaurant 테이블에서 데이터 가져오기
     def get_restaurants(self, category):
         restaurants = self.db.child("restaurant").child(category).get().val()
-        print(restaurants)
+        #print(restaurants)
         return restaurants
     
     def restaurants_desc(self, category):
@@ -157,7 +287,7 @@ class DBhandler:
             value = res.val()
             if value['store_name'] == name:
                 target_value = value
-        print(target_value)
+        #print(target_value)
         return target_value
         
     # 맛집 이름으로 review 테이블에서 평점 불러와 평균 계산하기
@@ -169,11 +299,11 @@ class DBhandler:
             value = res.val()
             if value['store_name'] == name:
                 rates.append(float(value['rating']))
-                print(rates)
+                #print(rates)
         if len(rates) is 0:
             return 0
         else:
-            return sum(rates)/len(rates)
+            return round((sum(rates)/len(rates)),1)
     
     ##########################################
     #메뉴 세부 화면에서 보여주기 위해 맛집 이름으로 menu 테이블에서 정보 가져오기
@@ -184,7 +314,7 @@ class DBhandler:
             value = res.val()
             if value['store_name'] == name:
                 target_value.append(value)
-        print(target_value)
+        #print(target_value)
         return target_value
     
     ##########################################
@@ -195,7 +325,100 @@ class DBhandler:
         for res in restaurants.each():
             value = res.val()
             if value['store_name'] == name:
+                value['key'] = res.key()
                 target_value.append(value)
-        print(target_value)
+        #print(target_value)
         return target_value
     
+    ##########################################
+    #프로필 사진 가져오는 함수
+    def get_profile_pic(self, num):
+        profile_info ={
+            0: "/static/profile/profile_common.png",
+            1: "/static/profile/profile_dog.png",
+            2: "/static/profile/profile_duck.png",
+            3: "/static/profile/profile_monkey.png",
+            4: "/static/profile/profile_rabbit.png",
+            5: "/static/profile/profile_squirrel.png",
+            6: "/static/profile/profile_alien.png",
+            7: "/static/profile/profile_cat.png"
+        }
+        return profile_info[num]
+    
+    #DB에서 유저의 프로필 사진을 수정하는 함수
+    def update_user_profile(self, profile_num, _id):
+        print(profile_num)
+        users = self.db.child("users").get()
+        if users.each() is not None:
+            for user in users.each():
+                value = user.val()
+                if value['id'] == _id:
+                    self.db.child("users").child(user.key()).update({"profile_pic": profile_num})
+                    return True
+            return False
+        else:
+            return False     
+    
+    ##########################################
+    #마커 정보를 표현해주기 위해 레스토랑의 position을 전부 가져오는 함수
+    def get_all_restaurants(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            print(value)
+            for val in value.values():
+                storeList.append(val['position'])
+        return storeList
+    
+    ##########################################
+    #마커 정보를 표현해주기 위해 레스토랑의 이름을 전부 가져오는 함수
+    def get_all_restaurants_name(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            print(value)
+            for val in value.values():
+                storeList.append(val['store_name'])
+        return storeList
+    
+    ##########################################
+    #마커 정보를 표현해주기 위해 레스토랑의 주소를 전부 가져오는 함수
+    def get_all_restaurants_addr(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            print(value)
+            for val in value.values():
+                storeList.append(val['addr'])
+        return storeList
+    
+    ##########################################
+    #마커 정보를 표현해주기 위해 레스토랑의 주소를 전부 가져오는 함수
+    def get_all_restaurants_tel(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            print(value)
+            for val in value.values():
+                storeList.append(val['tel'])
+        return storeList
+    
+    ##########################################
+    #마커 이미지 변경에 사용될 리뷰수를 가져오는 함수
+    def get_all_restaurants_review_num(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            for val in value.values():
+                storeList.append(val['review_num'])
+        return storeList
+    
+    ##########################################
+    #카테고리별 클릭을 통한 마커 표시에 사용될 카테고리를 가져오는 함수
+    def get_all_restaurants_category(self):
+        restaurants = self.db.child("restaurant").get().val()
+        storeList = []
+        for value in restaurants.values():
+            for val in value.values():
+                storeList.append(val['food_category'])
+        return storeList

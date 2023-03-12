@@ -82,19 +82,21 @@ button{
     margin: 10px;
 }
 
+.warp_api_info{
+    margin: 20px 0 20px 0;
+    width: 80%;
+}
+
 /*가게이름 영역*/
 .wrap_txt{
-    width: 80%;
     margin-bottom: 10px;
-    margin-top: 30px;
 }
 .info_store_name{
     text-align: left;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
     font-size: 30px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px 5px 10px 5px;
     color: black;
 }
 
@@ -108,6 +110,12 @@ button{
         0 0 0 0 white, 
         0 0 0 0 white, 
         0 1.5px 0 0 #D9D9D9 inset;
+    display : flex;
+    align-items : center;
+    justify-content: flex-start;
+}
+.wrap_api_list{
+    margin: 0 auto;
     display : flex;
     align-items : center;
     justify-content: flex-start;
@@ -131,6 +139,15 @@ button{
     font-weight: 500;
     font-size: 17px;
     margin: 17px 5px 17px 5px;
+    width: 100px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+.txt_address, .txt_tel{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 5px 5px 5px 5px;
     width: 100px;
     align-self: flex-start;
     flex-shrink: 0;
@@ -276,6 +293,14 @@ ul ul li:hover .item_dropdown{
     padding-left: 10px;
     background-color: var(--common-light-grey);
 }
+.txt_info_address, .txt_info_tel{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--common-dark-grey);
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0 20px 0 5px;
+    flex-shrink: 0;
+}
 
 /*소제목-메뉴와 리뷰*/
 .title{
@@ -303,7 +328,7 @@ ul ul li:hover .item_dropdown{
     background-color: var(--navy);
     min-width : 280px;
 }
-.txt_init_menu, .txt_init_review{
+.txt_init_menu, .txt_init_review, .txt_menu_price_show, .txt_review_show{
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--common-dark-grey);
     font-weight: 500;

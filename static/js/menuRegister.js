@@ -45,5 +45,15 @@ if (event.target === btnMenuRegister) {
         menuBody.style.overflow = 'auto';
         menuBody.style.overflowX = 'hidden';
     }
+    
+    var inputName = document.getElementsByClassName('txt_input_name')[0].value;
+    var inputPrice = document.getElementsByClassName('txt_input_price')[0].value;
+    var infoMenu = document.querySelector('.txt_init_menu');
+    var infoPrice = document.querySelector('.txt_menu_price_show');
+    //console.log(inputName)
+    if(typeof(infoMenu) != 'undefined' && infoMenu != null){
+        infoMenu.innerText = inputName;
+        infoPrice.innerText = inputPrice;
+    }
 }
 });

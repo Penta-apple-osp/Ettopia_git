@@ -10,10 +10,18 @@
     <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/reviewRegister.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/imgUploadDelete.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <!--헤더 영역-->
     {% include 'header.html' %}
+    
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
 
     <!--타이틀 영역-->
     <div class="wrap_txt">
@@ -23,7 +31,7 @@
 
     <!--가게로 돌아가기~메뉴추가 영역-->
     <div class="wrap_btn">
-        <a href="storeDetail" class="btn_return_store">
+        <a href="/storeDetail/{{category}}/{{store_name}}/" class="btn_return_store">
             <img class="img_return_store" src="{{ url_for('static', filename='icon/icon_return.png') }}" alt="가게로 돌아가기 버튼">
             <div class="txt_btn">가게로 돌아가기</div>
         </a>
@@ -40,26 +48,31 @@
         <div class="wrap_reviewblock">
             <div class="wrap_review_area">
                 <div class="wrap_profile">
-                    <img class="img_profile" src="https://via.placeholder.com/100x100.png/ddd/ddd">
+                    <img class="img_profile" src="{{data.profile_pic}}">
                 </div>
                 <div class="txt_area">
                     <div class="title_area">
-                        <div class="info_nickname">닉네임</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="20" height="20">
+                        <div class="info_nickname">{{data.reviewer_nickname}}</div>
+                        <div class="wrap_star">
+                            <i data-star="{{data.rating}}"></i>
+                    </div>
                     </div>
                     <p class="txt_review">
                         {{data.review_txt}}
                     </p>
-                    <img class="img_review" src="{{data.img_path}}" alt="가게 대표사진">
-                    <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                    <div class="wrap_img_review">
+                        <img class="img_review" src="{{data.img_path}}" alt="가게 대표사진">
+                        <!-- 일단 사진은 하나만 올릴 수 있다고 하자...
+                        <img class="img_review" src="https://via.placeholder.com/200x144.png/ddd/ddd" alt="가게 대표사진">
+                        -->
+                    </div>
                 </div>
                 <div class="wrap_like">
-                    <img class="img_like" src="{{ url_for('static', filename='icon/icon_like_before.png') }}">
-                    <p class="txt_num_like">{{data.like_num}}</p>
+                        <!--
+                        <input type="checkbox" id="liked" class="liked" name="liked" value="liked" /><label for="liked"></label>
+                        -->
+                    <p class="liked" id="" name="liked" value="{{data.key}}" onclick='change_like_color(this)'>❤</p>
+                    <p class="txt_num_like" id="">{{data.like_num}}</p>
                 </div>
             </div>
         </div>
@@ -68,12 +81,12 @@
         <div class="wrap_none_review">
             <img src="{{ url_for('static', filename='icon/icon_crying.png') }}" height="50" width="50" alt="crying">
             <p style="font-family: 'Noto Sans KR', sans-serif;font-weight: 700; font-size: 17px; color: var(--common-dark-grey)">
-            아직 등록된 리뷰가 없어요. 첫 리뷰를 등록해 주세요!
+            아직 {{store_name}}에 등록된 리뷰가 없어요. 첫 리뷰를 등록해 주세요!
             </p>
         </div>
         {% endif %}
         
-        <!--예시로 남겨두기-->
+        <!--예시로 남겨두기
         <div class="wrap_reviewblock">
             <div class="wrap_review_area">
                 <div class="wrap_profile">
@@ -103,13 +116,116 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 
     <!--리뷰 추가 팝업창-->
     {% include 'reviewRegisterSubmit.html' %}
 
+    <div class="dummy_page"></div>
     <!--푸터 영역-->
     {% include 'footer.html' %}
+    
+    <script>
+    let review_dic = {
+	    "reviewKey" : null,
+        "elementId" : null
+	};
+        
+    let like_dic = {
+	    "reviewKey" : null,
+        "elementId" : null
+	};
+        
+        <!--로그인한 사용자가 누른 Like를 보여주는 ajax-->
+    $(document).ready(function(){
+       for(var i=0; i < $(".liked").length; i++){
+            $(".liked").eq(i).attr("id", "heart" + i); 
+            $(".txt_num_like").eq(i).attr("id", "like_num" + i);
+            like_dic['reviewKey'] = $(".liked").eq(i).attr("value");
+            like_dic['elementId'] =  $(".liked").eq(i).attr('id');
+            //console.log(like_dic['reviewKey']);
+            //console.log(like_dic['elementId']);
+           
+            $.ajax({
+              type : 'post',
+              url: '{{url_for("checkLike")}}',
+              data : JSON.stringify(like_dic),
+              dataType : 'JSON',
+              contentType: "application/json",
+              success : function(data) { //data는 내가 flask에서 return 받은 데이터 이름
+                //console.log(data['elementId']);
+                if (data['result'] == 'success'){
+                    $("#" + data['elementId']).addClass('clicked');
+                }
+              },
+              error : function() {
+                alert('서버 통신에 실패하였습니다.');
+              }
+            })
+           
+        }
+    });
+        
+    //like의 색을 바꾸어주는 함수->클릭 시 핑크, 클릭 취소시 회색
+    function change_like_color(element) {
+        if($(element).hasClass('clicked')){ //이미 클릭 된 상황이니까 삭제해 주어야 함
+            review_dic['reviewKey'] = $(element).attr('value');
+            review_dic['elementId'] = $(element).next().attr('id');
+            //console.log(review_dic);
+            
+            $.ajax({
+              type : 'post',
+              url: '{{url_for("sub")}}',
+              data : JSON.stringify(review_dic),
+              dataType : 'JSON',
+              contentType: "application/json",
+              success : function(data) { //data는 내가 flask에서 return 받은 데이터 이름
+                if (data['result'] == 'success'){
+                    //console.log(data['elementId']);
+                    $(element).toggleClass('clicked');
+                    $("#" + data['elementId']).text(data['like_num']);
+                }
+                if (data['result'] == 'notauser'){
+                    alert('🪐좋아요 기능은 이또피아의 거주민만 사용할 수 있어요🪐');
+                } 
+              },
+              error : function() {
+                alert('서버 통신에 실패하였습니다.');
+              }
+            })
+            
+        } else{ //클릭이 안 된 상황이니까 클릭으로 바꾸어 주어야 함
+            //console.log($(element).attr('value'));
+            review_dic['reviewKey'] = $(element).attr('value');
+            review_dic['elementId'] = $(element).next().attr('id');
+            //console.log(review_dic);
+            
+            $.ajax({
+              type : 'post',
+              url: '{{url_for("add")}}',
+              data : JSON.stringify(review_dic),
+              dataType : 'JSON',
+              contentType: "application/json",
+              success : function(data) { //data는 내가 flask에서 return 받은 데이터 이름
+                if (data['result'] == 'success'){
+                    //console.log(data['elementId']);
+                    $(element).toggleClass('clicked');
+                    $("#" + data['elementId']).text(data['like_num']);
+                }
+                if (data['result'] == 'notauser'){
+                    alert('🪐좋아요 기능은 이또피아의 거주민만 사용할 수 있어요🪐');
+                }     
+              },
+              error : function() {
+                alert('서버 통신에 실패하였습니다.');
+              }
+            }) //ajax의 괄호입니다
+        } //else의 괄호입니다
+    } //함수의 괄호입니다
+        
+    
+    </script>
     
 </body>
 </html>

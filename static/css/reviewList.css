@@ -146,6 +146,9 @@
     margin: 10px 0 17px 0;
     align-items: center;
 }
+.wrap_star{
+    padding: 0 0 4px 0;
+}
 .info_nickname{
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
@@ -167,9 +170,19 @@
     line-height: 1.2em;
     height: 4.8em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
-.img_review{
+.wrap_img_review{
+    height: 144px;
     width: 200px;
-    margin: 20px 10px 10px 0;
+    overflow: hidden;
+    background: white;
+    position: relative;
+}
+.img_review{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 .wrap_like { /*like 영역*/
@@ -197,7 +210,132 @@
 
 /*화면 반응비 줄어들 시 사진 커지기*/
 @media screen and (max-width: 1000px) {
-    .img_review{
+    .wrap_img_review{
         width: 95%;
+        padding-top: 72%;
+        height: 0;
     }
+}
+
+/*별점 표시 구역*/
+
+[data-star] {
+  text-align:left;
+  font-style: normal ;
+  display:inline-block;
+  position: relative;
+  unicode-bidi: bidi-override;
+}
+[data-star]::before { 
+  display:block;
+  content: "✿✿✿✿✿";
+  color: #D9D9D9;
+  font-size: 30px;
+}
+[data-star]::after {
+  white-space:nowrap;
+  position:absolute;
+  top:0;
+  left:0;
+  content: "✿✿✿✿✿";
+  width: 0;
+  color: var(--light-green);
+  overflow:hidden;
+  font-size: 30px;
+  height:100%;
+}
+
+[data-star^="0.1"]::after,[data-star^=".1"]::after{width:2%}
+[data-star^="0.2"]::after,[data-star^=".2"]::after{width:4%}
+[data-star^="0.3"]::after,[data-star^=".3"]::after{width:6%}
+[data-star^="0.4"]::after,[data-star^=".4"]::after{width:8%}
+[data-star^="0.5"]::after,[data-star^=".5"]::after{width:10%}
+[data-star^="0.6"]::after,[data-star^=".6"]::after{width:12%}
+[data-star^="0.7"]::after,[data-star^=".7"]::after{width:14%}
+[data-star^="0.8"]::after,[data-star^=".8"]::after{width:16%}
+[data-star^="0.9"]::after,[data-star^=".9"]::after{width:18%}
+[data-star^="1"]::after{width:20%}
+[data-star^="1.1"]::after{width:22%}
+[data-star^="1.2"]::after{width:24%}
+[data-star^="1.3"]::after{width:26%}
+[data-star^="1.4"]::after{width:28%}
+[data-star^="1.5"]::after{width:30%}
+[data-star^="1.6"]::after{width:32%}
+[data-star^="1.7"]::after{width:34%}
+[data-star^="1.8"]::after{width:36%}
+[data-star^="1.9"]::after{width:38%}
+[data-star^="2"]::after{width:40%}
+[data-star^="2.1"]::after{width:42%}
+[data-star^="2.2"]::after{width:44%}
+[data-star^="2.3"]::after{width:46%}
+[data-star^="2.4"]::after{width:48%}
+[data-star^="2.5"]::after{width:50%}
+[data-star^="2.6"]::after{width:52%}
+[data-star^="2.7"]::after{width:54%}
+[data-star^="2.8"]::after{width:56%}
+[data-star^="2.9"]::after{width:58%}
+[data-star^="3"]::after{width:60%}
+[data-star^="3.1"]::after{width:62%}
+[data-star^="3.2"]::after{width:64%}
+[data-star^="3.3"]::after{width:66%}
+[data-star^="3.4"]::after{width:68%}
+[data-star^="3.5"]::after{width:70%}
+[data-star^="3.6"]::after{width:72%}
+[data-star^="3.7"]::after{width:74%}
+[data-star^="3.8"]::after{width:76%}
+[data-star^="3.9"]::after{width:78%}
+[data-star^="4"]::after{width:80%}
+[data-star^="4.1"]::after{width:82%}
+[data-star^="4.2"]::after{width:84%}
+[data-star^="4.3"]::after{width:86%}
+[data-star^="4.4"]::after{width:88%}
+[data-star^="4.5"]::after{width:90%}
+[data-star^="4.6"]::after{width:92%}
+[data-star^="4.7"]::after{width:94%}
+[data-star^="4.8"]::after{width:96%}
+[data-star^="4.9"]::after{width:98%}
+[data-star^="5"]::after{width:100%}
+
+
+
+/*리뷰 좋아요 하트 누르기 버튼 영역*/
+
+/*.rating label {
+  float: right; /*가로 오른쪽 정렬 해줘야 별들 간 간격이 똑같음*/
+/*  position: relative; /*absolute 쓰면 별들 다 사라짐. absolute 부모 요소 기준으로 배치.*/
+/*  width: 25px; /*꽃들 사이 간격 조정*/
+/*  cursor: pointer; /*이 코드를 치면 아이콘 위로 마우스 커서를 올리면 모양이 바뀐다.*/
+/*}
+.rating label:not(:first-of-type) { /*아이콘 간 간격*/
+/*  padding-right: 1px;
+}
+*/
+/*
+.liked label:before {
+  content: '\2665';
+  font-size: 40px;
+  color: var(--white);
+  line-height: 1;
+  height: 40px;
+}
+.liked input {
+  display: none;
+}
+.liked input:checked ~ label:before {
+  transition: all 0.5s;
+  color: var(--pink);
+}
+*/
+
+.liked{
+  margin: 0 0 0 0;
+  font-size: 40px; /*폰트 사이즈*/
+  color: var(--common-light-grey); /*선택 전 글자 색깔*/
+  line-height: 1;
+  height: 40px;
+  cursor: pointer
+}
+.liked.clicked{
+  transition: all 0.5s;
+  color: var(--pink);
 }

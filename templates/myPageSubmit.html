@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myPage.css') }}">
+    <script src="{{ url_for('static', filename='js/myPage.js') }}" defer></script>
+</head>
+<body> 
+    <form class="wrap_popup_profile" action="/modifyProfile" method="post" enctype="multipart/form-data"> 
+        
+        <div class="wrap_body wrap_profile">
+            <div class="popup_head">
+                <p class="txt_title">{{ session['nickname'] }} 님의 프로필 변경</p>
+            </div>
+        
+            <div class="popup_body">
+                    <!--profile_info 가져오기-->
+                        <div class="wrap_profileBox_1">  <!--ajax & hover or figcaption 써보기-->
+                            <img class="profile profile_0" id="0" src="/static/profile/profile_common.png" onclick="borderImg(event)">
+                            <img class="profile profile_1" id="1" src="/static/profile/profile_dog.png" onclick="borderImg(event)">
+                            <img class="profile profile_2" id="2" src="/static/profile/profile_duck.png" onclick="borderImg(event)">
+                            <img class="profile profile_3" id="3" src="/static/profile/profile_monkey.png" onclick="borderImg(event)">
+                        </div>
+                        <div class="wrap_profileBox_2">
+                            <img class="profile profile_4" id="4" src="/static/profile/profile_rabbit.png" onclick="borderImg(event)">
+                            <img class="profile profile_5" id="5" src="/static/profile/profile_squirrel.png" onclick="borderImg(event)">
+                            <img class="profile profile_6" id="6" src="/static/profile/profile_alien.png" onclick="borderImg(event)">
+                            <img class="profile profile_7" id="7" src="/static/profile/profile_cat.png" onclick="borderImg(event)">
+                        </div>
+            </div>
+            <div class="popup_foot">
+                <!--등록하기/등록취소 버튼-->
+                <a href="#a" class="btn_profile_cancel">등록취소</a>  <!--이건 그냥 창 닫기-->
+                <button type="submit" class="btn_profile_register">등록하기</button>  <!--이거 누르면 진짜로 변하는 거로-->
+            </div>
+            <input name="profile_change" id="profile_change" type="hidden" value="">
+        </div>
+    </form>
+</body>

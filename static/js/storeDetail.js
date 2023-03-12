@@ -1,8 +1,8 @@
-var storePosition = document.getElementById('position').value
-storePosition = storePosition.replace('(', '').replace(')', '')
-position_splitted = storePosition.split(', ')
+var storePosition = document.getElementById('position').value;
+storePosition = storePosition.replace('(', '').replace(')', '');
+position_splitted = storePosition.split(', ');
 
-console.log(position_splitted)
+//console.log(position_splitted);
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -21,3 +21,4 @@ var marker = new kakao.maps.Marker({
 
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
+

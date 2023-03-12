@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
 </head>
 <body>
@@ -16,8 +17,29 @@
         <ul class="list_nav">
             <li class="nav_item"><a class="txt_item" href="/homePage">Home</a></li>
             <li class="nav_item"><a class="txt_item" href="/aboutUs">About Us</a></li>
-            <li class="nav_item"><a class="txt_item" href="/myPage">MyPage</a></li>
+            {% if session['id'] %}
+            <li class="nav_item">
+                <button class="wrap_myprofile">
+                        <div class="wrap_profile_pic">
+                            <img class="profile_pic" src="{{ session['profile_pic'] }}">
+                        </div>
+                    <span id="icon" class="material-symbols-outlined">expand_more</span>
+                    <!--여기에 드롭다운 찾아둔 코드 넣기..-->
+                    <div class="profilebox" style="background-size: cover; background-image: url({{ url_for('static', filename='img/img_infoprofile.png') }})">
+                        <div class="wrap_profile_content">
+                            <div class="wrap_profile_pic_big">
+                                <img class="profile_pic_big" src="{{ session['profile_pic'] }}">
+                            </div>
+                            <p>{{ session['nickname'] }}님, 안녕하세요!</p>
+                            <li class="profile_item"><a class="txt_profile_item" href="/myPage">MyPage</a></li>
+                            <li class="profile_item"><a class="txt_profile_item" href="/logout">Logout</a></li>
+                        </div>
+                    </div>
+                </button>
+            </li>
+            {% else %}
             <li class="nav_item"><a class="txt_item" href="/loginRegister">Login/Register</a></li>
+            {% endif %}    
         </ul>
         <a href="#a" class="btn_nav_menu">
             <img src="{{ url_for('static', filename='icon/icon_menu.png') }}" alt="메뉴 버튼" width="30" height="30">

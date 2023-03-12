@@ -36,7 +36,9 @@
                 <div class="txt_area">
                     <div class="title_area">
                         <div class="info_name">{{data[1].store_name}}</div>
-                        <img src="{{ url_for('static', filename='icon/icon_rating.png') }}" alt="평점" width="27" height="27">
+                        <div class="wrap_star">
+                            <i data-star="{{data[1].store_avg}}"></i>
+                        </div>  
                     </div>
                     <p class="info_address">가게 주소: {{data[1].addr}}</p>
                     <p class="info_time">운영 시간: {{data[1].hour_open}}~{{data[1].hour_close}}</p>
@@ -62,7 +64,7 @@
     <p>등록된 맛집이 없습니다. </p>
     {% endif %}
 
-    
+    <div class="dummy_page"></div>
     <!--푸터 영역-->
     {% include 'footer.html' %}
     

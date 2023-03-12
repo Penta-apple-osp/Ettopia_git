@@ -42,5 +42,12 @@ if (event.target === btnReviewRegister) {
         reviewBody.style.overflow = 'auto';
         reviewBody.style.overflowX = 'hidden';
     }
+    
+    var inputReview = document.getElementById("input_review").value;
+    var infoReview = document.querySelector('.txt_init_review');
+    //console.log(inputReview)
+    if(typeof(infoReview) != 'undefined' && infoReview != null){
+        infoReview.innerText = inputReview;
+    }
 }
 });

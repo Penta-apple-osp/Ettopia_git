@@ -1,4 +1,6 @@
 
+@import url('style.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,9 +10,8 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin: 0 auto;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: linear-gradient(rgb(8, 21, 35) 40%, rgb(104, 104, 132));
     overflow-x: hidden;

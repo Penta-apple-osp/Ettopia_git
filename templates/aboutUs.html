@@ -8,8 +8,7 @@
         <script src="{{ url_for('static', filename='main.js') }}" defer></script>
     </head>
     <!--html의 로딩 순서로 인해 위의 body의 스타일 속성에 한번 더 언급해줘야 함.-->
-    <body style="justify-content: flex-start; align-items: center; height: 100vh;
-                 background: linear-gradient(rgb(8, 21, 35) 40%, rgb(104, 104, 132)); overflow-x: hidden;">
+    <body>
         <!--헤더 영역-->
         {% include 'header.html' %}
         
@@ -64,8 +63,10 @@
         <div class="txt_direction">
         <p>우리 PentaApple은 팀원 간의 확실한 피드백과 활발한 소통을 지향합니다.</p><br>
         <p>프로젝트 Ettopia는 사용자의 편의성 증대와 강한 커뮤니티 소속감 제공을 지향합니다.<p>
-        </div><br><br>
-
+        </div>
+        <!--사이 띄어주기-->
+        <p class="wrap_space"></p>
+        
         <div class="img_snowflakes" aria-hidden="true">
             <div class="img_snowflake">
             ❅
@@ -98,48 +99,8 @@
             ❄
             </div>
           </div>
-
-    <!--푸터 영역-->
-          
-          <!-- FOOTER START -->
-          <div class="footer">
-            <div class="contain">
-              <div class="col">
-                  <h1>About Pentapple</h1>
-                  <p class = "txt">Our mission is to build a bond between people <br>making a living near Ewha.<br>
-                    We provide a service for the convenience of all users <br> when they are eating, playing, studying, and etc.    
-                </div>
-              <div class="col">
-                <h1>Company</h1>
-                <ul>
-                  <li>About Us</li>
-                  <li>Services</li>
-                  <li>Imprint</li>
-                  <li>News</li>
-                </ul>
-              </div>
-              <div class="col">
-                <h1>Support</h1>
-                <ul>
-                  <li>Contact Us</li>
-                  <li>FAQs</li>
-                  <li>Privacy Policy</li>
-                </ul>
-              </div>
-              <div class="txt">
-                    <br>
-                    <div style="font-size: 14px; font-weight: 400; margin-left: 40px;">
-                    E-mail : pentapple@gmail.com<br>
-                    Phone : 123-4567-8910<br><br>
-                    </div>
-                    <hr style="border: solid 1px #999999; width: 120%; margin-left: 40px;">
-                    <div style="font-size: 13px; font-weight: 300; margin-left: 40px;"><br>Copyright © 2022 Pentapple Company • All rights reserved</div>
-      
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- END OF FOOTER -->
         
+          {% include 'footer.html' %}
+
     </body>
 </html>

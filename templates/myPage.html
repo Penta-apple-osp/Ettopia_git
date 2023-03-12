@@ -7,46 +7,60 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/myPage.css') }}">
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/myPage.js') }}" defer></script>
-   
 </head>
 <body>
     <!--헤더 영역-->
     {% include 'header.html' %}
-    <div class="wrap_profile_block">
-        <div>
-            
-        </div>
-        <div class="wrap_inform_show">
-            <p class="txt_nickname">닉네임</p> <!--나중에 여기에 입력받은 닉네임 DB 정보 연결. js 연결 못함-->
-            <p class="txt_email">이메일</p><!--나중에 여기에 입력받은 이메일 DB정보 연결. js 연결 못함-->
+    
+<div class="wrap_info">
+
+    <div class="background">
+        <div class="background_box">
+            <img class="img_background" src="{{ url_for('static', filename='img/img_MyPage_background3.jpg') }}">
         </div>
     </div>
     
-    <div class="wrap_modify_profile">
-        <a href="#a" class="btn_modify_profile">
-            <div class="txt_modify_profile">프로필 수정하기</div>
-            <img class="img_modify_profile" src="{{ url_for('static', filename='icon/icon_edit.png') }}" alt="프로필 수정">
-        </a>
-    </div>
-
+    <!--멘트 영역-->
+    <div class="wrap_txt">
+        <p class="title_mypage">이또피아 주민 {{ session['nickname'] }}님, 환영합니다!</p>
+    </div> 
+    
+    <!--개인정보 영역-->
+        <div class="wrap_profile_block">
+            <div class="wrap_inform_show">
+                <!--사용자가 로그인을 했을 시에만 해당 화면이 보여져야 함(아닐 시 알람 창으로 먼저 로그인을 완료하십시오 뜨게 하기)-->
+                <img class="img_profile" src="{{ session['profile_pic'] }}">
+                <div class="wrap_total_user">
+                    <p class="txt_nickname">닉네임 : {{ session['nickname'] }}</p>
+                    <p class="txt_id">아이디 : {{ session['id'] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_modify_profile">
+            <a href="#a" class="btn_modify_profile">
+                <div class="txt_modify_profile">프로필 수정하기</div>
+                <!--<img class="img_modify_profile" src="{{ url_for('static', filename='icon/icon_edit.png') }}" alt="프로필 수정">-->
+            </a>
+        </div>
+    
 
     <!--사이 띄어주기-->
     <p class="wrap_space"></p>
 
-    <!--타이틀 영역-->
-
-    <div class="wrap_txt">
-        <p class="title_mypage">그동안 이런 가게에 다녀왔어요</p>
-    </div> 
-
-    <!--flip page-->
+    <!--flip page
     <section>  
         <div class="left next"></div>  
         <div class="right next"></div>  
         <div class="left current"></div>  
         <div class="right current"></div>  
-    </section>  
-
+    </section> 
+    -->
+    <div class="dummy_page"></div>
+</div>
+    
+    <!--팝업창 영역-->
+    {% include 'myPageSubmit.html' %}
+    
     <!--푸터 영역-->
     {% include 'footer.html' %}
     

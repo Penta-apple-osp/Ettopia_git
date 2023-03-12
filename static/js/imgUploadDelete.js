@@ -4,7 +4,7 @@
 
 /*이미지 파일 업로드하면 화면에 보여주기*/
 function loadFile(input, imgTemp, imgContainer, btnUpload, btnDelete) {
-    console.log('imgUploadDelete.js의 loadFile 함수 호출');
+    //console.log('imgUploadDelete.js의 loadFile 함수 호출');
     
     var file = input.files[0];	//선택된 파일 가져오기
 
@@ -43,7 +43,7 @@ function loadFile(input, imgTemp, imgContainer, btnUpload, btnDelete) {
 
 
 function deleteFile(imgOld, btnUpload, fileChoose, imgContainer, btnDelete) {
-    console.log('imgUploadDelete.js의 deleteFile 함수 호출');
+    //console.log('imgUploadDelete.js의 deleteFile 함수 호출');
     //기존 이미지 삭제
     var oldImage = imgOld;
     URL.revokeObjectURL(oldImage.src);

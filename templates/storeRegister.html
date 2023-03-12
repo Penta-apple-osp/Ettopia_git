@@ -22,12 +22,7 @@
         </div>
     </nav>
     
-    <!--팝업 영역-->
-    {% for mesg in get_flashed_messages() %}
-        <script>alert("{{ mesg }}")</script>
-    {% endfor %}
-    
-    <form action="/submit_store_info" method="post" enctype="multipart/form-data" >   
+    <form action="/submit_store_info" method="post" enctype="multipart/form-data">   
     <!--가게대표사진업로드 영역-->
     <div id="wrap_img">
         <div id="wrap_img_upload">
@@ -54,16 +49,34 @@
         </div>
     </div>
 
-    <!--가게이름 영역-->
-    <div class="wrap_txt">
-        <p class="info_store_name">{{data.store_name}}</p>
-        <input type="hidden" name="store_name" value="{{data.store_name}}"/>  
+    <div class="warp_api_info">
+        <!--가게이름 영역-->
+        <div class="wrap_txt">
+            <p class="info_store_name">{{data.store_name}}</p>
+            <input type="hidden" name="store_name" value="{{data.store_name}}"/>  
+        </div>
+        <input name="store_address" id="store_address" type="hidden" value="{{data.store_address}}">
+        <input name="store_tel" id="store_tel" type="hidden" value="{{data.store_tel}}">
+        <input name="store_position" id="store_position" type="hidden" value="{{data.store_position}}">
+
+        <!--API 정보 디스플레이-->
+        <div class="wrap_api_list">
+            <p class="txt_address">가게주소</p>
+            <p class="txt_info_address">{{data.store_address}}</p>
+        </div>
+        <div class="wrap_api_list">
+            <p class="txt_tel">전화번호</p>
+            <p class="txt_info_tel">{% if data.store_tel == "" %}
+                                    -
+                                    {% endif %}
+                                    {% if data.store_tel != "" %}
+                                    {{data.store_tel}}
+                                    {% endif %}
+            </p>
+        </div>
     </div>
-    <input name="store_address" id="store_address" type="hidden" value="{{data.store_address}}">
-    <input name="store_tel" id="store_tel" type="hidden" value="{{data.store_tel}}">
-    <input name="store_position" id="store_position" type="hidden" value="{{data.store_position}}">
-        
-    <!--정보 입력 영역-->
+    
+    <!--사용자 입력 정보 받기-->    
     <div class="wrap_info_list">
         <p class="txt_food_category">음식종류</p>
         <div class="filter">
@@ -171,15 +184,13 @@
                 </ul>
                 <p class="txt_desc">까지</p>
             </div>
-        </div>
-        
-        
+        </div> 
     </div>
     <div class="wrap_info_list">
         <p class="txt_site">사이트</p>
         <input type="text" class="txt_input_site" name="txt_input_site" title="사이트 입력" placeholder="인스타그램 아이디, 가게 웹페이지 주소 등 입력">
     </div>
-
+    
     <!--사이 띄어주기-->
     <p class="wrap_space"></p>
 
@@ -193,6 +204,7 @@
     </div>
     <div class="wrap_info_list_fixed">
         <p class="txt_init_menu">등록된 메뉴가 없습니다.</p>
+        <p class="txt_menu_price_show"></p>
     </div>
 
     <!--사이 띄어주기-->
@@ -208,6 +220,7 @@
     </div>
     <div class="wrap_info_list_fixed">
         <p class="txt_init_review">등록된 리뷰가 없습니다.</p>
+        <p class="txt_review_show"></p>
     </div>
 
     <!--사이 띄어주기-->
@@ -222,10 +235,11 @@
     <!--등록하기/등록취소 버튼-->
     <div class="wrap_register">
         <a href="/homePage" class="btn_store_cancel">등록취소</a>
-        <button type="submit" href="storeDetail.html" class="btn_store_register">등록하기</button>  <!--result랑 연결되어있었음 데베 확인필요-->
+        <button type="submit" class="btn_store_register">등록하기</button>  <!--result랑 연결되어있었음 데베 확인필요-->
     </div>
     </form>
     
+    <div class="dummy_page"></div>
     <!--푸터 영역-->
     {% include 'footer.html' %}
     

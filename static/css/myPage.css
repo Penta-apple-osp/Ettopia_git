@@ -5,34 +5,212 @@
 
 @import url('style.css');
 
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    overflow-x: hidden;
+}
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow-x: hidden;
+    width: 100%;
+}
+.background_box{
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 145.3928%; /*이미지3를 위한 비율*/
+    /*padding-top: 72.98611%; 이미지2를 위한 비율*/
+    position: relative;
+}
+.img_background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.dummy_page{
+    opacity: 0;
+}
 /*프로필 이미지 영역*/
+.wrap_total_user{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10%;
+    text-align: center;
+    padding: 0.3em 1.2em;
+    margin: 5px 0.5em 5px 0;
+}
 .wrap_inform_show{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.img_profile{
+    width: 200px;
+    height: 200px;
+    border-radius: 70%;
+    overflow: hidden;
+    margin: 30px 0 30px 0;
 }
 
+.txt_nickname, .txt_id{
+    color: white;  /*기존 색상: var(--common-dark-grey)*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+}
+.wrap_modify_profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .btn_modify_profile{
   text-decoration: none;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  border: 0.2em solid var(--pink);  
+  padding: 0.3em 1.2em;
+  margin: 5px 0.5em 5px 0;
 }
+/*
 .img_modify_profile{
   width: 20px;
   height: 20px;
   align-self: center;
-  margin-top: 4px;
+  margin-top: 3px;
 }
+*/
 .txt_modify_profile{
   font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 18px;
-  color: var(--common-dark-grey);
+  color: var(--pink);  /*기존 색상: var(--common-dark-grey)*/
   text-decoration: none;
-  margin: 0 3px;
-  margin-top: 4px;
+  text-align: center;
+  margin: 5px 0 5px 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: all 0.1s;
 }
 
+/*--------------팝업창 부분--------------*/
+.wrap_popup_profile {
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /*팝업창 확인으로 잠시 주석처리함 -> 완료 시 주석 삭제 및 주석 해제 필요*/
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.wrap_popup_profile.show {
+    display: flex;
+}
+.wrap_profile { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+.popup_head{
+    width:100%;
+    box-shadow: 0px 0px 10px 2px #a1a1a1;
+    z-index: 1000;
+    background-color: var(--navy);
+    text-align: left;
+}
+.wrap_profileBox_1, .wrap_profileBox_2 {
+    flex-direction: row;
+}   
+.profile_0, .profile_1, .profile_2, .profile_3, 
+.profile_4, .profile_5, .profile_6, .profile_7{
+    width: 136px;
+    height: 136px;
+    border-radius: 70%;
+    cursor: pointer;
+    overflow: hidden;
+    flex-direction: column;
+    border: 3px solid rgba(255, 0, 0, 0);
+}
+.profile_0:hover, .profile_1:hover, .profile_2:hover, .profile_3:hover, 
+.profile_4:hover, .profile_5:hover, .profile_6:hover, .profile_7:hover{
+    transform: scale( 1.03, 1.03 );
+}
+.profile_0.clicked, .profile_1.clicked, .profile_2.clicked, .profile_3.clicked, 
+.profile_4.clicked, .profile_5.clicked, .profile_6.clicked, .profile_7.clicked{
+    border: 3px solid var(--pink);
+}
+.txt_title{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    margin: 15px 20px;
+}
+.wrap_profile .popup_body{
+    width:85%;
+    align-self: center;
+    padding: 10px 50px 10px 50px;
+    display: flex;
+    flex-direction: column;
+}
+.popup_foot{         
+    padding-right: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.btn_profile_cancel, .btn_profile_register {
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.3em 1.2em;
+    margin: 5px 0.5em 5px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.1s;
+}
+.btn_profile_cancel {
+    background-color: #fff;
+    color: var(--navy);
+    border: 0.12em solid var(--navy);
+}
+.btn_profile_register{
+    color: white;
+    background-color: var(--navy);
+    border: 0.12em solid var(--navy);
+  }
+/*--------------------------------------*/
 .wrap_space{
     margin: 17px;
 }
@@ -44,6 +222,7 @@
 
  .title_mypage {
   font-family: 'Noto Sans KR', sans-serif;
+  color: white;
   font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
@@ -68,13 +247,13 @@
 
 
 /*flip page*/
+/*
 :root {  
   --duration: 500ms;   
   --ease-in: cubic-bezier(0.85, 0, 1, 1);  
   --ease-out: cubic-bezier(0, 0, 0.3, 1);  
-  --ease-in-out: ease-in-out;
-  /*여기 이미지 경로만 바꿔주면 된다.*/  
-  --image-current: url("/static/img/img_temp6.jpeg");
+  --ease-in-out: ease-in-out; 
+  --image-current: url("/static/img/img_temp6.jpeg"); //여기 이미지 경로만 바꿔주면 된다
   --image-next: url("/static/img/img_temp5.jpeg");
  }  
 
@@ -97,8 +276,10 @@
   width: 80%;
   height: 600px;
   margin: 0 auto;
- }  
+ } 
+*/
  /* duplicating the animation to get it to fire again */  
+/*
  section.flip {  
   animation: zoom-2 calc(var(--duration) * 2) var(--ease-in-out);  
  }  
@@ -133,7 +314,7 @@
   transform-origin: 0% 50%;  
  }  
  .next.left {  
-  transform: rotateY(90deg);  /*회전시키는 것*/
+  transform: rotateY(90deg);
   transition-delay: 0ms;  
   transition-timing-function: var(--ease-in);  
   z-index: 9;  
@@ -152,14 +333,17 @@
   transform: rotateY(0deg);  
   transition-delay: var(--duration);  
   transition-timing-function: var(--ease-out);  
- }  
+ } 
+*/
 
 
 /*창의 크기가 작아지면 팝업창도 같이 작아짐*/
 @media screen and (max-width: 800px) {
-  .warp_body{
+  .wrap_body{
     width: 500px;
   }
+  .popup_body img{
+    width: 96px;
+    height: 96px;
+  }
 }
-
-
