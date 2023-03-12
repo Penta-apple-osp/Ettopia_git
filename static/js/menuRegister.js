@@ -1,5 +1,5 @@
 const menuBody = document.querySelector('body');
-const popupMenu = document.querySelector('.warp_popup_menu');
+const popupMenu = document.querySelector('.wrap_popup_menu');
 const btnMenuCancel = document.querySelector('.btn_menu_cancel');
 const btnMenuRegister = document.querySelector('.btn_menu_register');
 const btnAddMenu = document.querySelector('.btn_add_menu');
@@ -14,16 +14,26 @@ if (popupMenu.classList.contains('show')) {
 
 });
 
-/*등록취소 버튼을 누르면 팝업창 사라짐*/
+/*등록취소 버튼을 누르면 등록한 정보 사라지고, 팝업창 사라짐*/
 btnMenuCancel.addEventListener('click', (event) => {
-if (event.target === btnMenuCancel) {
-    popupMenu.classList.toggle('show');
 
-    if (!popupMenu.classList.contains('show')) {
-        menuBody.style.overflow = 'auto';
-        menuBody.style.overflowX = 'hidden';
+    var inputName = document.getElementsByClassName('txt_input_name');
+    var inputPrice = document.getElementsByClassName('txt_input_price');
+    for(var i=0; i<inputName.length; i++){
+	    inputName[i].value = '';
     }
-}
+    for(var i=0; i<inputPrice.length; i++){
+	    inputPrice[i].value = '';
+    }
+
+    if (event.target === btnMenuCancel) {
+        popupMenu.classList.toggle('show');
+
+        if (!popupMenu.classList.contains('show')) {
+            menuBody.style.overflow = 'auto';
+            menuBody.style.overflowX = 'hidden';
+        }
+    }
 });
 
 /*등록하기 버튼을 누르면 팝업창 사라짐*/

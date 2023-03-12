@@ -16,6 +16,10 @@
     overflow-x: hidden;
  }
 
+.wrap_space{
+    margin: 17px;
+}
+
   /*펜타애플 팀 이름 영역*/
   .wavy {
     position: relative;

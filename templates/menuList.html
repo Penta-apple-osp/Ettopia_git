@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menuList.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menuRegister.css') }}">
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/menuRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/imgUploadDelete.js') }}" defer></script>
 </head>
 <body>
     <!--헤더 영역-->
@@ -92,7 +94,7 @@
     </div>
 
     <!--메뉴 추가 팝업창-->
-    {% include 'menuRegister.html' %}
+    {% include 'menuRegisterSubmit.html' %}
 
     <!--푸터 영역-->
     {% include 'footer.html' %}

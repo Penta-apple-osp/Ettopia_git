@@ -9,6 +9,7 @@
     <script src="{{ url_for('static', filename='main.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/storeRegister.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/reviewRegister.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/imgUploadDelete.js') }}" defer></script>
 </head>
 <body>
     <!--헤더 영역-->
@@ -123,7 +124,7 @@
     </div>
 
     <!--리뷰 추가 팝업창-->
-    {% include 'reviewRegister.html' %}
+    {% include 'reviewRegisterSubmit.html' %}
 
     <!--푸터 영역-->
     {% include 'footer.html' %}
