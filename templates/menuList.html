@@ -16,7 +16,7 @@
     {% include 'header.html' %}
 
     <!--가게대표사진영역-->
-    <div id="img_store"><img src="{{ url_for('static', filename='img/img_temp2.jpg') }}" class="img_temp_store"></div>
+    <div id="img_store"><img src="{{ storeData.img_path }}" class="img_head_store"></div>
 
     <!--가게로 돌아가기~메뉴추가 영역-->
     <p class="title_menu_list">메뉴 리스트</p>
@@ -32,6 +32,45 @@
     </div>
 
     <!--메뉴 영역-->
+    {% if total > 0 %}
+        {% for i in row %}
+        <div class="list_store_menu">
+            {% for j in row2 %}
+            <div class="items">
+                <div class="item_area" id="#" href="#">
+                    <img class="img_menu" src="{{datas[i*4+j].img_path}}" alt="가게 대표사진">
+                    <p class="info_menu_name" >{{datas[i*4+j].menu_name}}</p>
+                    <p class="info_menu_price">{{datas[i*4+j].menu_price}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    
+        <div class="list_store_menu">
+            {% for j in left %}
+            <div class="items">
+                <div class="item_area" id="#" href="#">
+                    <img class="img_menu" src="{{datas[total-j-1].img_path}}" alt="가게 대표사진">
+                    <p class="info_menu_name" >{{datas[total-j-1].menu_name}}</p>
+                    <p class="info_menu_price">{{datas[total-j-1].menu_price}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% for j in left2 %}
+            <div class="items">
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <div class="wrap_none_menu">
+        <img src="{{ url_for('static', filename='icon/icon_crying.png') }}" height="50" width="50" alt="crying">
+        <p style="font-family: 'Noto Sans KR', sans-serif;font-weight: 700; font-size: 17px; color: var(--common-dark-grey)">
+        아직 등록된 메뉴가 없어요. 첫 메뉴를 등록해 주세요!
+        </p>
+    </div>
+    {% endif %}
+    <!--
     <div class="list_store_menu">
         <div class="items">
             <div class="item_area" id="#" href="#">
@@ -62,36 +101,7 @@
             </div>
         </div>
     </div>
-    <div class="list_store_menu">
-        <div class="items">
-            <div class="item_area" id="#" href="#">
-                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
-                <p class="info_menu_name" >메뉴이름</p>
-                <p class="info_menu_price">가격</p>
-            </div>
-        </div>
-        <div class="items">
-            <div class="item_area" id="#" href="#">
-                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
-                <p class="info_menu_name" >메뉴이름</p>
-                <p class="info_menu_price">가격</p>
-            </div>
-        </div>
-        <div class="items">
-            <div class="item_area" id="#" href="#">
-                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
-                <p class="info_menu_name" >메뉴이름</p>
-                <p class="info_menu_price">가격</p>
-            </div>
-        </div>
-        <div class="items">
-            <div class="item_area" id="#" href="#">
-                <img class="img_menu" src="https://via.placeholder.com/300x180.png/ddd/ddd" alt="가게 대표사진">
-                <p class="info_menu_name" >메뉴이름</p>
-                <p class="info_menu_price">가격</p>
-            </div>
-        </div>
-    </div>
+    -->
 
     <!--메뉴 추가 팝업창-->
     {% include 'menuRegisterSubmit.html' %}

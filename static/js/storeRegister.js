@@ -39,3 +39,12 @@ function view_dropdown_price(txtForChange, txtTarget, valueHidden){
     
     valueHidden.setAttribute('value', txt); /*폼에 제출할 값 변경*/
 }
+
+function view_dropdown_hour(txtForChange, txtTarget, valueHidden){
+    var txt = txtForChange;
+    console.log('드롭다운 클릭: ' + txt);
+    var target = txtTarget;
+    target.innerHTML = txt;
+    
+    valueHidden.setAttribute('value', txt); /*폼에 제출할 값 변경*/
+}

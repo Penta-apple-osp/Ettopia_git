@@ -20,6 +20,7 @@
         <div class="items_filter">
             <input type="button" class="btn_filter_location" onclick="change_btn_location(event)" value="정문">
             <input type="button" class="btn_filter_location" onclick="change_btn_location(event)" value="후문">
+            <input type="button" class="btn_filter_food" onclick="change_btn(event)" value="한식">
             <input type="button" class="btn_filter_food" onclick="change_btn(event)" value="양식">
             <input type="button" class="btn_filter_food" onclick="change_btn(event)" value="중식">
             <input type="button" class="btn_filter_food" onclick="change_btn(event)" value="일식">
@@ -59,27 +60,33 @@
         <p class="title_category" href="#">카테고리</p>
     </div>
     <!--카테고리 구역-->
+    <form style="margin: 0; padding: 0; width: 0; height: 0; background-color:transparent; border:0px;" action="/categoryList" method="POST">
+        <input name="value_category" id="value_category" type="hidden" value="">
+        <input name="page" id="page" type="hidden" value="0">
+        <button style="margin: 0; padding: 0; width: 0; height: 0; background-color:transparent; border:0px;"
+                type="submit" name="btn_category_info" id="btn_category_info"></button>
+    </form>
     <div class="list_store">
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="한식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_korean.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">한식 가게</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="양식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_western.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">양식 가게</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="중식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_chinese.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">중식 가게</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="일식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_japanese.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">일식 가게</p>
             </a>
@@ -87,25 +94,25 @@
     </div>
     <div class="list_store">
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="태국" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_thai.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">태국 음식</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="인도" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_indian.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">인도 음식</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="음료&카페" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_cafe.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">음료&카페</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="디저트" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_dessert.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">디저트</p>
             </a>
@@ -113,25 +120,25 @@
     </div>
     <div class="list_store">
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="분식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_street.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">분식</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="페스트푸드" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_fastfood.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">페스트푸드</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="샐러드&샌드위치" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_salad.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">샐러드&샌드위치</p>
             </a>
         </div>
         <div class="items">
-            <a class="item_area" id="#" href="/categoryList">
+            <a class="item_area" id="야식" href="#a" onclick="categoryChange(this.id)">
                 <img class="thumb_box" src="{{ url_for('static', filename='img/category_night.jpg') }}" alt="가게 대표사진">
                 <p class="title_box">야식</p>
             </a>
@@ -142,6 +149,7 @@
         <input name="store_name" id="store_name" type="hidden" value="">
         <input name="store_address" id="store_address" type="hidden" value="">
         <input name="store_tel" id="store_tel" type="hidden" value="">
+        <input name="store_position" id="store_position" type="hidden" value="">
         <button type="submit" name="btn_info_store" id="btn_info_store"></button>
     </form>
     <!--푸터 영역-->
@@ -246,7 +254,9 @@ function displayPlaces(places) {
             });
             
             kakao.maps.event.addListener(marker, 'click', function() {
-            	clickmarker(marker, places);
+                var position = this.getPosition();
+                //kakao.map.setCenter(position);
+            	clickmarker(marker, places, position);
             });	
             kakao.maps.event.addListener(map, 'click', function(mouseEvent){
                 console.log("클릭됨");
@@ -377,7 +387,7 @@ function removeAllChildNods(el) {
 }  
 
 // 마커를 클릭하면 해당 가게의 이름, 주소, 핸드폰, URL, 이메일을 가져오고, 이를 맛집 등록화면으로 넘겨주는 함수
-function clickmarker (marker, places) {
+function clickmarker (marker, places, position) {
 	var place_name = places[0];
 	var address_name = places[1];
 	var place_id = places[2];
@@ -391,42 +401,14 @@ function clickmarker (marker, places) {
 	console.log(phone);
 	console.log(place_url);
 	console.log(email)
+    console.log(position)
     
     document.getElementById('store_name').setAttribute('value', place_name);
     document.getElementById('store_address').setAttribute('value', address_name);
     document.getElementById('store_tel').setAttribute('value', phone);
+    document.getElementById('store_position').setAttribute('value', position);
     document.getElementById('btn_info_store').click();
-    
-    /*
-	$('#output').empty();
-	$.ajax({
-		data :"place_id="+place_id +"&email="+email,
-		type: "POST",
-		url : 'homePage',
-		contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-		dataType : 'json',
-		success : function (data) {
-			var output = '';
-			output += '<tr>';
-			output +='<td>' + place_name + '</td>';
-			output += '</tr>';
-			output += '<tr>';
-			output +='<td>' + address_name + '</td>';
-			output += '</tr>';
-			output += '<tr>';
-			output +='<td>' + phone + '</td>';
-			output += '</tr>';
-			output += '<tr>';
-			output +='<td>' + place_url + '</td>';
-			output += '</tr>';
-			$('#output').append(output);
-		},
-		error:function() {
-			alert("clickmarker 실패");
-		}
-		
-	});
-    */
+
 }
 </script>
 

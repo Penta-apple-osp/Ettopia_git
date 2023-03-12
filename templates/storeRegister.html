@@ -22,6 +22,11 @@
         </div>
     </nav>
     
+    <!--팝업 영역-->
+    {% for mesg in get_flashed_messages() %}
+        <script>alert("{{ mesg }}")</script>
+    {% endfor %}
+    
     <form action="/submit_store_info" method="post" enctype="multipart/form-data" >   
     <!--가게대표사진업로드 영역-->
     <div id="wrap_img">
@@ -56,6 +61,7 @@
     </div>
     <input name="store_address" id="store_address" type="hidden" value="{{data.store_address}}">
     <input name="store_tel" id="store_tel" type="hidden" value="{{data.store_tel}}">
+    <input name="store_position" id="store_position" type="hidden" value="{{data.store_position}}">
         
     <!--정보 입력 영역-->
     <div class="wrap_info_list">
@@ -130,6 +136,46 @@
         </div>
     </div>
     <div class="wrap_info_list">
+        <p class="txt_working_hour">영업시간</p>
+        
+        <div class="make_new_line">
+            <div class="wrap_hour_open">
+                <ul class="list_dropdown">
+                    <li class="wrap_dropdown"><a class="txt_dropdown" id="txt_open_dropdown" href="#a">시작</a>
+                    <ul class="list_dropdown">
+                        <li><a class="item_dropdown" id="08:00 이전" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">08:00 이전</a></li>
+                        <li><a class="item_dropdown" id="09:00" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">09:00</a></li>
+                        <li><a class="item_dropdown" id="10:00" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">10:00</a></li>
+                        <li><a class="item_dropdown" id="11:00" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">11:00</a></li>
+                        <li><a class="item_dropdown" id="12:00" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">12:00</a></li>
+                        <li><a class="item_dropdown" id="13:00 이후" href="#a" onclick="view_dropdown_hour(this.id, txt_open_dropdown, value_open_hour)">13:00 이후</a></li>
+                        <input type="hidden" name="value_open_hour" id="value_open_hour" value="">
+                    </ul class="list_dropdown">
+                    </li>
+                </ul>
+                <p class="txt_desc">부터</p>
+            </div>
+            <div class="wrap_hour_open">
+               <ul class="list_dropdown">
+                    <li class="wrap_dropdown"><a class="txt_dropdown" id="txt_close_dropdown" href="#a">종료</a>
+                    <ul class="list_dropdown">
+                        <li><a class="item_dropdown" id="16:00 이전" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">16:00 이전</a></li>
+                        <li><a class="item_dropdown" id="17:00" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">17:00</a></li>
+                        <li><a class="item_dropdown" id="18:00" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">18:00</a></li>
+                        <li><a class="item_dropdown" id="19:00" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">19:00</a></li>
+                        <li><a class="item_dropdown" id="20:00" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">20:00</a></li>
+                        <li><a class="item_dropdown" id="21:00 이후" href="#a" onclick="view_dropdown_hour(this.id, txt_close_dropdown, value_close_hour)">21:00 이후</a></li>
+                        <input type="hidden" name="value_close_hour" id="value_close_hour" value="">
+                    </ul class="list_dropdown">
+                    </li>
+                </ul>
+                <p class="txt_desc">까지</p>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="wrap_info_list">
         <p class="txt_site">사이트</p>
         <input type="text" class="txt_input_site" name="txt_input_site" title="사이트 입력" placeholder="인스타그램 아이디, 가게 웹페이지 주소 등 입력">
     </div>
@@ -176,7 +222,7 @@
     <!--등록하기/등록취소 버튼-->
     <div class="wrap_register">
         <a href="/homePage" class="btn_store_cancel">등록취소</a>
-        <button type="submit" href="result.html" class="btn_store_register">등록하기</button>
+        <button type="submit" href="storeDetail.html" class="btn_store_register">등록하기</button>  <!--result랑 연결되어있었음 데베 확인필요-->
     </div>
     </form>
     
